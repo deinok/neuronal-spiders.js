@@ -7,14 +7,15 @@
  */
 class Point {
 
-    x: number;
-    y: number;
-    originX: number;
-    originY: number;
-    active: boolean;
-    closest: Point[];
+    public x: number;
+    public y: number;
+    public originX: number;
+    public originY: number;
+    public active: boolean;
+    public closest: Point[];
 
-    constructor(x: number, y: number) {
+
+    public constructor(x: number, y: number) {
         this.x = this.originX= x;
         this.y = this.originY = y;
     }
@@ -24,7 +25,7 @@ class Point {
      * @param point1 The Point 1
      * @param point2 The Point 2
      */
-    static getDistance(point1: Point, point2: Point): number {
+    public static getDistance(point1: Point, point2: Point): number {
         return Math.pow(point1.x - point2.x, 2) + Math.pow(point1.y - point2.y, 2);
     }
 
@@ -36,12 +37,12 @@ class Point {
  */
 class Circle {
 
-    point: Point;
-    radius: number;
-    color: string;
-    active: boolean;
+    public point: Point;
+    public radius: number;
+    public color: string;
+    public active: boolean;
 
-    draw(canvasContext:CanvasRenderingContext2D):void {
+    public draw(canvasContext:CanvasRenderingContext2D):void {
         if (this.active){
             return;
         }
