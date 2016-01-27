@@ -32,7 +32,7 @@
     <Content Include="web.config" />
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="greenshock.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\greenshock.d.ts" />
     <TypeScriptCompile Include="neuronal-spiders.ts" />
     <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
   </ItemGroup>
@@ -89,7 +89,7 @@
     <TypeScriptModuleKind>None</TypeScriptModuleKind>
     <TypeScriptOutFile />
     <TypeScriptOutDir />
-    <TypeScriptGeneratesDeclarations>False</TypeScriptGeneratesDeclarations>
+    <TypeScriptGeneratesDeclarations>True</TypeScriptGeneratesDeclarations>
     <TypeScriptNoEmitOnError>True</TypeScriptNoEmitOnError>
     <TypeScriptMapRoot />
     <TypeScriptSourceRoot />

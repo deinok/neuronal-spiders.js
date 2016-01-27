@@ -1,6 +1,56 @@
 ﻿/*Requereix TweenMax (script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.2/TweenMax.min.js"></script>)*/
 /*Requereix JQUERY 1.9*/
+"use strict"
 
+/**
+ * Represents a Point in the canvas
+ */
+class Point {
+
+    x: number;
+    y: number;
+    originX: number;
+    originY: number;
+    active: boolean;
+    closest: Point[];
+
+    constructor(x: number, y: number) {
+        this.x = this.originX= x;
+        this.y = this.originY = y;
+    }
+
+    /**
+     * Gets the distance between two points
+     * @param point1 The Point 1
+     * @param point2 The Point 2
+     */
+    static getDistance(point1: Point, point2: Point): number {
+        return Math.pow(point1.x - point2.x, 2) + Math.pow(point1.y - point2.y, 2);
+    }
+
+}
+
+
+/**
+ * Represents the Circle of a Point
+ */
+class Circle {
+
+    point: Point;
+    radius: number;
+    color: string;
+    active: boolean;
+
+    draw(canvasContext:CanvasRenderingContext2D):void {
+        if (this.active){
+            return;
+        }
+        canvasContext.beginPath();
+        canvasContext.arc(this.point.x, this.point.y, this.radius, 0, 2 * Math.PI, false);
+        canvasContext.fillStyle = 'rgba(255,255,255,' + this.active + ')';/*TODO: Color dels Cercles*/
+        canvasContext.fill();
+    }
+}
 
 
 $(function () {
