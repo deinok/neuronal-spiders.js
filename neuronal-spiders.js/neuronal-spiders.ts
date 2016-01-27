@@ -2,10 +2,12 @@
 /*Requereix JQUERY 1.9*/
 "use strict"
 
-/**
- * Represents a Point in the canvas
- */
-class Point {
+interface GeometricPoint {
+    x: number;
+    y: number;
+}
+
+class Point implements GeometricPoint{
 
     public x: number;
     public y: number;
@@ -14,17 +16,11 @@ class Point {
     public active: boolean;
     public closest: Point[];
 
-
     public constructor(x: number, y: number) {
         this.x = this.originX= x;
         this.y = this.originY = y;
     }
 
-    /**
-     * Gets the distance between two points
-     * @param point1 The Point 1
-     * @param point2 The Point 2
-     */
     public static getDistance(point1: Point, point2: Point): number {
         return Math.pow(point1.x - point2.x, 2) + Math.pow(point1.y - point2.y, 2);
     }
@@ -32,9 +28,6 @@ class Point {
 }
 
 
-/**
- * Represents the Circle of a Point
- */
 class Circle {
 
     public point: Point;
