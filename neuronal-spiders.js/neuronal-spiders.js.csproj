@@ -25,10 +25,8 @@
   <ItemGroup>
     <Content Include="app.css" />
     <Content Include="index.html" />
-    <Content Include="packages.config" />
-    <None Include="Scripts\jquery-1.9.0.intellisense.js" />
-    <Content Include="Scripts\jquery-1.9.0.js" />
-    <Content Include="Scripts\jquery-1.9.0.min.js" />
+    <Content Include=".bowerrc" />
+    <Content Include="bower.json" />
     <Content Include="spider.js" />
     <Content Include="web.config" />
   </ItemGroup>
@@ -36,7 +34,6 @@
     <TypeScriptCompile Include="neuronal-spiders.ts" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Scripts\jquery-1.9.0.min.map" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
