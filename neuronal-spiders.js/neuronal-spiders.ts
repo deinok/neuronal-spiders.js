@@ -70,6 +70,7 @@ $(function () {
         }
 
         // assign a circle to each point
+
         for (var i in points) {
             var c = new Circle(points[i], 2 + Math.random() * 2, 'rgba(255,255,255,0.3)');
             points[i].circle = c;
@@ -86,7 +87,8 @@ $(function () {
     }
 
     function mouseMove(e) {
-        var posx = posy = 0;
+        var posx = 0;
+        var posy = 0;
         if (e.pageX || e.pageY) {
             posx = e.pageX;
             posy = e.pageY;

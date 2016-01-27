@@ -86,7 +86,8 @@ $(function () {
 	}
 
 	function mouseMove(e) {
-		var posx = posy = 0;
+		var posx = 0;
+		var poxy = 0;
 		if (e.pageX || e.pageY) {
 			posx = e.pageX;
 			posy = e.pageY;
