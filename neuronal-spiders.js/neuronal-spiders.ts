@@ -2,6 +2,7 @@
 /*Requereix JQUERY 1.9*/
 
 
+
 $(function () {
 
     var width, height, canvas, ctx, points, target, animateHeader = true;

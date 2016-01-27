@@ -32,7 +32,7 @@
     <Content Include="web.config" />
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="TweenLite.d.ts" />
+    <TypeScriptCompile Include="greenshock.d.ts" />
     <TypeScriptCompile Include="neuronal-spiders.ts" />
     <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
   </ItemGroup>
