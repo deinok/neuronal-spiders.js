@@ -28,12 +28,16 @@
     <Content Include=".bowerrc" />
     <Content Include="bower.json" />
     <Content Include="spider.js" />
+    <Content Include="TweenLite.js" />
     <Content Include="web.config" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="TweenLite.d.ts" />
     <TypeScriptCompile Include="neuronal-spiders.ts" />
+    <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="packages.config" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>

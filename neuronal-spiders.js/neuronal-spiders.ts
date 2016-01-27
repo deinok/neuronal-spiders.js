@@ -1,6 +1,7 @@
 ﻿/*Requereix TweenMax (script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.2/TweenMax.min.js"></script>)*/
 /*Requereix JQUERY 1.9*/
 
+
 $(function () {
 
     var width, height, canvas, ctx, points, target, animateHeader = true;
@@ -71,9 +72,9 @@ $(function () {
 
         // assign a circle to each point
 
-        for (var i in points) {
-            var c = new Circle(points[i], 2 + Math.random() * 2, 'rgba(255,255,255,0.3)');
-            points[i].circle = c;
+        for(var l in points) {
+            var c = new Circle(points[l], 2 + Math.random() * 2, 'rgba(255,255,255,0.3)');
+            points[l].circle = c;
         }
     }
 
@@ -193,3 +194,5 @@ $(function () {
     }
 
 });
+
+
