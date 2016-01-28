@@ -107,35 +107,41 @@ class NeuronalSpider {
     canvas: HTMLCanvasElement;
     context: CanvasRenderingContext2D;
     points: Point[];
-    target: any;
+    target: GeometricPoint;
     animatedHeader: boolean;
+
+    initializeHeader(): void {
+        this.width = window.innerWidth;
+        this.height = window.innerHeight;
+        this.target = new Point(
+            window.innerWidth / 2,
+            window.innerHeight / 3
+        );
+
+        this.canvas = <HTMLCanvasElement>document.getElementById('spiders');
+        this.canvas.width = window.innerWidth;
+        this.canvas.height = window.innerHeight;
+        this.context = this.canvas.getContext('2d');
+    }
   
 }
 
 
 $(function () {
 
-    var points, target, animateHeader = true;
-    var spider = new NeuronalSpider();
+    var points, animateHeader = true;
+    
 
     // Main
+
+    var spider = new NeuronalSpider();
+    spider.initializeHeader();
+    
     initHeader();
     initAnimation();
     addListeners();
 
     function initHeader() {
-        spider.width = window.innerWidth;
-        spider.height = window.innerHeight;
-        target = {
-            x: spider.width / 2,
-            y: spider.height / 3
-        };
-
-        spider.canvas = <HTMLCanvasElement>document.getElementById('spiders');
-        spider.canvas.width = spider.width;
-        spider.canvas.height = spider.height;
-        spider.context = spider.canvas.getContext('2d');
-
         // create points
         points = [];
         for (var x = 0; x < spider.width; x = x + spider.width / 20) {
@@ -209,8 +215,8 @@ $(function () {
             posx = e.clientX + document.body.scrollLeft + document.documentElement.scrollLeft;
             posy = e.clientY + document.body.scrollTop + document.documentElement.scrollTop;
         }
-        target.x = posx;
-        target.y = posy;
+        spider.target.x = posx;
+        spider.target.y = posy;
     }
 
     function scrollCheck() {
@@ -236,13 +242,13 @@ $(function () {
             spider.context.clearRect(0, 0, spider.width, spider.height);
             for (var i in points) {
                 // detect points in range
-                if (Math.abs(getDistance(target, points[i])) < 4000) {
+                if (Math.abs(getDistance(spider.target, points[i])) < 4000) {
                     points[i].active = 0.3;
                     points[i].circle.active = 0.6;
-                } else if (Math.abs(getDistance(target, points[i])) < 20000) {
+                } else if (Math.abs(getDistance(spider.target, points[i])) < 20000) {
                     points[i].active = 0.1;
                     points[i].circle.active = 0.3;
-                } else if (Math.abs(getDistance(target, points[i])) < 40000) {
+                } else if (Math.abs(getDistance(spider.target, points[i])) < 40000) {
                     points[i].active = 0.02;
                     points[i].circle.active = 0.1;
                 } else {
