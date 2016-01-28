@@ -115,7 +115,7 @@ class NeuronalSpider {
 
 $(function () {
 
-    var ctx, points, target, animateHeader = true;
+    var points, target, animateHeader = true;
     var spider = new NeuronalSpider();
 
     // Main
@@ -134,7 +134,7 @@ $(function () {
         spider.canvas = <HTMLCanvasElement>document.getElementById('spiders');
         spider.canvas.width = spider.width;
         spider.canvas.height = spider.height;
-        ctx = spider.canvas.getContext('2d');
+        spider.context = spider.canvas.getContext('2d');
 
         // create points
         points = [];
@@ -219,8 +219,8 @@ $(function () {
     }
 
     function resize() {
-        spider.width =spider.canvas.width = window.innerWidth;
-        spider.height =spider.canvas.height= window.innerHeight;
+        spider.width = spider.canvas.width = window.innerWidth;
+        spider.height = spider.canvas.height = window.innerHeight;
     }
 
     // animation
@@ -233,7 +233,7 @@ $(function () {
 
     function animate() {
         if (animateHeader) {
-            ctx.clearRect(0, 0, spider.width, spider.height);
+            spider.context.clearRect(0, 0, spider.width, spider.height);
             for (var i in points) {
                 // detect points in range
                 if (Math.abs(getDistance(target, points[i])) < 4000) {
@@ -271,11 +271,11 @@ $(function () {
     function drawLines(p) {
         if (!p.active) return;
         for (var i in p.closest) {
-            ctx.beginPath();
-            ctx.moveTo(p.x, p.y);
-            ctx.lineTo(p.closest[i].x, p.closest[i].y);
-            ctx.strokeStyle = 'rgba(255,255,255,' + p.active + ')';/*TODO: Lines color*/
-            ctx.stroke();
+            spider.context.beginPath();
+            spider.context.moveTo(p.x, p.y);
+            spider.context.lineTo(p.closest[i].x, p.closest[i].y);
+            spider.context.strokeStyle = 'rgba(255,255,255,' + p.active + ')';/*TODO: Lines color*/
+            spider.context.stroke();
         }
     }
 
@@ -291,10 +291,10 @@ $(function () {
 
         this.draw = function () {
             if (!_this.active) return;
-            ctx.beginPath();
-            ctx.arc(_this.pos.x, _this.pos.y, _this.radius, 0, 2 * Math.PI, false);
-            ctx.fillStyle = 'rgba(255,255,255,' + _this.active + ')';/*TODO: Color dels Cercles*/
-            ctx.fill();
+            spider.context.beginPath();
+            spider.context.arc(_this.pos.x, _this.pos.y, _this.radius, 0, 2 * Math.PI, false);
+            spider.context.fillStyle = 'rgba(255,255,255,' + _this.active + ')';/*TODO: Color dels Cercles*/
+            spider.context.fill();
         };
     }
 
