@@ -31,8 +31,9 @@
     <Content Include="web.config" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="src\Color.ts" />
     <TypeScriptCompile Include="Scripts\typings\greenshock.d.ts" />
-    <TypeScriptCompile Include="neuronal-spiders.ts" />
+    <TypeScriptCompile Include="src\neuronal-spiders.ts" />
     <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
   </ItemGroup>
   <ItemGroup>
@@ -86,7 +87,7 @@
     <TypeScriptCompileOnSaveEnabled>True</TypeScriptCompileOnSaveEnabled>
     <TypeScriptNoImplicitAny>False</TypeScriptNoImplicitAny>
     <TypeScriptModuleKind>None</TypeScriptModuleKind>
-    <TypeScriptOutFile />
+    <TypeScriptOutFile>dist/neuronal-spiders.js</TypeScriptOutFile>
     <TypeScriptOutDir>dist/</TypeScriptOutDir>
     <TypeScriptGeneratesDeclarations>True</TypeScriptGeneratesDeclarations>
     <TypeScriptNoEmitOnError>True</TypeScriptNoEmitOnError>

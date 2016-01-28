@@ -3,59 +3,6 @@
 
 "use strict"
 
-class Color {
-
-    public red: number;
-    public green: number;
-    public blue: number;
-    public opacity: number;
-
-    public constructor(red: number, green: number, blue: number, opacity: number) {
-        if (red < 0 || red > 255 || green < 0 || green > 255 || blue < 0 || blue > 255 || opacity < 0 || opacity > 1) {
-            throw new RangeError("Out of range numbers")
-        }
-        this.red = red;
-        this.green = green;
-        this.blue = blue;
-        this.opacity = opacity;
-    }
-
-    public static FromHex(hex:string):Color {
-        var shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
-        hex = hex.replace(shorthandRegex, function (m, r, g, b) {
-            return r + r + g + g + b + b;
-        });
-
-        var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-
-        return result ? new Color(
-            Number.parseInt(result[1], 16),
-            Number.parseInt(result[2], 16),
-            Number.parseInt(result[3], 16),
-            1
-        ) : null;
-    }
-
-    public toString(): string {
-        if (this.opacity == 1) {
-            return this.toHexString();
-        }
-        return this.toRGBAString();
-    }
-
-    public toHexString(): string {
-        return "#" + this.componentToHex(this.red) + this.componentToHex(this.green) + this.componentToHex(this.blue);
-    }
-    public toRGBAString(): string {
-        return "rgba(" + this.red + "," + this.green + "," + this.blue + "," + this.opacity + ")";
-    }
-
-    private componentToHex(component:number):string {
-        var hexComponent:string = component.toString(16);
-        return hexComponent.length == 1 ? "0" + hexComponent : hexComponent;
-    }
-}
-
 interface GeometricPoint {
     x: number;
     y: number;
@@ -126,12 +73,11 @@ class NeuronalSpider {
   
 }
 
-
 $(function () {
 
     var points=[];
     
-
+    
     // Main
 
     var spider = new NeuronalSpider();
