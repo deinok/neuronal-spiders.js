@@ -67,8 +67,9 @@ class Point implements GeometricPoint{
     public y: number;
     public originX: number;
     public originY: number;
-    public active: boolean;
+    public activeOpacity: number;
     public closest: Point[];
+    public circle: Circle;
 
     public constructor(x: number, y: number) {
         this.x = this.originX= x;
@@ -108,14 +109,14 @@ class NeuronalSpider {
     points: Point[];
     target: any;
     animatedHeader: boolean;
-
-
+  
 }
 
 
 $(function () {
 
-    var width, height, canvas, ctx, points, target, animateHeader = true;
+    var ctx, points, target, animateHeader = true;
+    var spider = new NeuronalSpider();
 
     // Main
     initHeader();
@@ -123,24 +124,24 @@ $(function () {
     addListeners();
 
     function initHeader() {
-        width = window.innerWidth;
-        height = window.innerHeight;
+        spider.width = window.innerWidth;
+        spider.height = window.innerHeight;
         target = {
-            x: width / 2,
-            y: height / 3
+            x: spider.width / 2,
+            y: spider.height / 3
         };
 
-        canvas = document.getElementById('spiders');
-        canvas.width = width;
-        canvas.height = height;
-        ctx = canvas.getContext('2d');
+        spider.canvas = <HTMLCanvasElement>document.getElementById('spiders');
+        spider.canvas.width = spider.width;
+        spider.canvas.height = spider.height;
+        ctx = spider.canvas.getContext('2d');
 
         // create points
         points = [];
-        for (var x = 0; x < width; x = x + width / 20) {
-            for (var y = 0; y < height; y = y + height / 20) {
-                var px = x + Math.random() * width / 20;
-                var py = y + Math.random() * height / 20;
+        for (var x = 0; x < spider.width; x = x + spider.width / 20) {
+            for (var y = 0; y < spider.height; y = y + spider.height / 20) {
+                var px = x + Math.random() * spider.width / 20;
+                var py = y + Math.random() * spider.height / 20;
                 var p = {
                     x: px,
                     originX: px,
@@ -213,15 +214,13 @@ $(function () {
     }
 
     function scrollCheck() {
-        if (document.body.scrollTop > height) animateHeader = false;
+        if (document.body.scrollTop > spider.height) animateHeader = false;
         else animateHeader = true;
     }
 
     function resize() {
-        width = window.innerWidth;
-        height = window.innerHeight;
-        canvas.width = width;
-        canvas.height = height;
+        spider.width =spider.canvas.width = window.innerWidth;
+        spider.height =spider.canvas.height= window.innerHeight;
     }
 
     // animation
@@ -234,7 +233,7 @@ $(function () {
 
     function animate() {
         if (animateHeader) {
-            ctx.clearRect(0, 0, width, height);
+            ctx.clearRect(0, 0, spider.width, spider.height);
             for (var i in points) {
                 // detect points in range
                 if (Math.abs(getDistance(target, points[i])) < 4000) {
