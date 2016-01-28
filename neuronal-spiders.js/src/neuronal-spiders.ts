@@ -3,50 +3,6 @@
 
 "use strict"
 
-interface GeometricPoint {
-    x: number;
-    y: number;
-}
-
-class Point implements GeometricPoint{
-
-    public x: number;
-    public y: number;
-    public originX: number;
-    public originY: number;
-    public activeOpacity: number;
-    public closest: Point[];
-    public circle: Circle;
-
-    public constructor(x: number, y: number) {
-        this.x = this.originX= x;
-        this.y = this.originY = y;
-    }
-
-    public static getDistance(point1: Point, point2: Point): number {
-        return Math.pow(point1.x - point2.x, 2) + Math.pow(point1.y - point2.y, 2);
-    }
-
-}
-
-class Circle {
-
-    public point: GeometricPoint;
-    public radius: number;
-    public color: Color;
-    public active: boolean;
-
-    public draw(canvasContext:CanvasRenderingContext2D):void {
-        if (this.active){
-            return;
-        }
-        canvasContext.beginPath();
-        canvasContext.arc(this.point.x, this.point.y, this.radius, 0, 2 * Math.PI, false);
-        canvasContext.fillStyle = 'rgba(255,255,255,' + this.active + ')';/*TODO: Color dels Cercles*/
-        canvasContext.fill();
-    }
-}
-
 class NeuronalSpider {
 
     public width: number;

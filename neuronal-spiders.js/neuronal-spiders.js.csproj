@@ -31,10 +31,13 @@
     <Content Include="web.config" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="src\Circle.ts" />
     <TypeScriptCompile Include="src\Color.ts" />
     <TypeScriptCompile Include="Scripts\typings\greenshock.d.ts" />
+    <TypeScriptCompile Include="src\GeometricPoint.ts" />
     <TypeScriptCompile Include="src\neuronal-spiders.ts" />
     <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
+    <TypeScriptCompile Include="src\Point.ts" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
