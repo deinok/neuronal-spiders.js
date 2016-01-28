@@ -27,7 +27,6 @@
     <Content Include="Tests\Test1\test1.html" />
     <Content Include=".bowerrc" />
     <Content Include="bower.json" />
-    <Content Include="spider.js" />
     <Content Include="TweenLite.js" />
     <Content Include="web.config" />
   </ItemGroup>
