@@ -129,7 +129,7 @@ class NeuronalSpider {
 
 $(function () {
 
-    var points;
+    var points=[];
     
 
     // Main
@@ -143,7 +143,6 @@ $(function () {
 
     function initHeader() {
         // create points
-        points = [];
         for (var x = 0; x < spider.width; x = x + spider.width / 20) {
             for (var y = 0; y < spider.height; y = y + spider.height / 20) {
                 var px = x + Math.random() * spider.width / 20;
