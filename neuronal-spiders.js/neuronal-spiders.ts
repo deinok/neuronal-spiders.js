@@ -84,7 +84,7 @@ class Point implements GeometricPoint{
 
 class Circle {
 
-    public point: Point;
+    public point: GeometricPoint;
     public radius: number;
     public color: Color;
     public active: boolean;
@@ -102,15 +102,15 @@ class Circle {
 
 class NeuronalSpider {
 
-    width: number;
-    height: number;
-    canvas: HTMLCanvasElement;
-    context: CanvasRenderingContext2D;
-    points: Point[];
-    target: GeometricPoint;
-    animatedHeader: boolean;
+    public width: number;
+    public height: number;
+    public canvas: HTMLCanvasElement;
+    public context: CanvasRenderingContext2D;
+    public points: Point[];
+    public target: GeometricPoint;
+    public animateHeader: boolean = true;
 
-    initializeHeader(): void {
+    public initializeHeader(): void {
         this.width = window.innerWidth;
         this.height = window.innerHeight;
         this.target = new Point(
@@ -129,7 +129,7 @@ class NeuronalSpider {
 
 $(function () {
 
-    var points, animateHeader = true;
+    var points;
     
 
     // Main
@@ -220,8 +220,8 @@ $(function () {
     }
 
     function scrollCheck() {
-        if (document.body.scrollTop > spider.height) animateHeader = false;
-        else animateHeader = true;
+        if (document.body.scrollTop > spider.height) spider.animateHeader = false;
+        else spider.animateHeader = true;
     }
 
     function resize() {
@@ -238,7 +238,7 @@ $(function () {
     }
 
     function animate() {
-        if (animateHeader) {
+        if (spider.animateHeader) {
             spider.context.clearRect(0, 0, spider.width, spider.height);
             for (var i in points) {
                 // detect points in range
