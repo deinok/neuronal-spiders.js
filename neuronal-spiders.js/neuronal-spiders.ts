@@ -2,6 +2,25 @@
 /*Requereix JQUERY 1.9*/
 "use strict"
 
+class Color {
+
+    public red: number;
+    public green: number;
+    public blue: number;
+    public opacity: number;
+
+    public contructor(red: number, green: number, blue: number, opacity: number) {
+        this.red = red;
+        this.green = green;
+        this.blue = blue;
+        this.opacity = opacity;
+    }
+
+    public toString(): string {
+        return "rgba(" + this.red + "," + this.green + "," + this.blue + "," + this.opacity + ")";
+    }
+}
+
 interface GeometricPoint {
     x: number;
     y: number;
