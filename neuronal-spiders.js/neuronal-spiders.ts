@@ -81,7 +81,6 @@ class Point implements GeometricPoint{
 
 }
 
-
 class Circle {
 
     public point: Point;
@@ -98,6 +97,19 @@ class Circle {
         canvasContext.fillStyle = 'rgba(255,255,255,' + this.active + ')';/*TODO: Color dels Cercles*/
         canvasContext.fill();
     }
+}
+
+class NeuronalSpider {
+
+    width: number;
+    height: number;
+    canvas: HTMLCanvasElement;
+    context: CanvasRenderingContext2D;
+    points: Point[];
+    target: any;
+    animatedHeader: boolean;
+
+
 }
 
 
@@ -186,7 +198,7 @@ $(function () {
         window.addEventListener('resize', resize);
     }
 
-    function mouseMove(e) {
+    function mouseMove(e:MouseEvent) {
         var posx = 0;
         var posy = 0;
         if (e.pageX || e.pageY) {
