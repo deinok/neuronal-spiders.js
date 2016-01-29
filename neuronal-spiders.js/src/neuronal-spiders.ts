@@ -83,6 +83,19 @@ class NeuronalSpider {
         }
         return points;
     }
+
+
+
+    public drawLines(p:any):void {
+        if (!p.active) return;
+        for (var i in p.closest) {
+            this.context.beginPath();
+            this.context.moveTo(p.x, p.y);
+            this.context.lineTo(p.closest[i].x, p.closest[i].y);
+            this.context.strokeStyle = 'rgba(255,255,255,' + p.active + ')';/*TODO: Lines color*/
+            this.context.stroke();
+        }
+    }
 }
 
 $(function () {
@@ -163,7 +176,7 @@ $(function () {
                     points[i].circle.color.alpha = 0;
                 }
 
-                drawLines(points[i]);
+                spider.drawLines(points[i]);
                 points[i].circle.draw(spider.context);
             }
         }
