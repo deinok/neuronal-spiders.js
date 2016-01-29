@@ -76,6 +76,13 @@ class NeuronalSpider {
         return points;
     }
   
+    public addCircles(points: any[]): any[] {
+        for (var l in points) {
+            var circle = new Circle(points[l], 2 + Math.random() * 2, new Color(255, 255, 255, 0.3));
+            points[l].circle = circle;
+        }
+        return points;
+    }
 }
 
 $(function () {
@@ -89,20 +96,12 @@ $(function () {
     spider.initializeHeader();
     points = spider.createPoints(points);
     points = spider.findClosests(points);
-
+    points = spider.addCircles(points);
     
-    initHeader();
+
     initAnimation();
     addListeners();
 
-    function initHeader() {
-
-        // assign a circle to each point
-        for (var l in points) {
-            var circle = new Circle(points[l], 2 + Math.random() * 2, new Color(255, 255, 255, 0.3));
-            points[l].circle = circle;
-        }
-    }
 
     // Event handling
     function addListeners() {
