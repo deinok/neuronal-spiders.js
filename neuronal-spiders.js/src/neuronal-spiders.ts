@@ -26,29 +26,12 @@ class NeuronalSpider {
         this.canvas.height = window.innerHeight;
         this.context = this.canvas.getContext('2d');
     }
-  
-}
 
-$(function () {
-
-    var points=[];
-    
-    
-    // Main
-
-    var spider = new NeuronalSpider();
-    spider.initializeHeader();
-    
-    initHeader();
-    initAnimation();
-    addListeners();
-
-    function initHeader() {
-        // create points
-        for (var x = 0; x < spider.width; x = x + spider.width / 20) {
-            for (var y = 0; y < spider.height; y = y + spider.height / 20) {
-                var px = x + Math.random() * spider.width / 20;
-                var py = y + Math.random() * spider.height / 20;
+    public createPoints(points: any[]): any[] {
+        for (var x = 0; x < this.width; x = x + this.width / 20) {
+            for (var y = 0; y < this.height; y = y + this.height / 20) {
+                var px = x + Math.random() * this.width / 20;
+                var py = y + Math.random() * this.height / 20;
                 var p = {
                     x: px,
                     originX: px,
@@ -58,8 +41,10 @@ $(function () {
                 points.push(p);
             }
         }
+        return points;
+    }
 
-        // for each point find the 5 closest points
+    public findClosests(points: any[]): any[] {
         for (var i = 0; i < points.length; i++) {
             var closest = [];
             var p1 = points[i];
@@ -78,7 +63,7 @@ $(function () {
 
                     for (var k = 0; k < 5; k++) {
                         if (!placed) {
-                            if (getDistance(p1, p2) < getDistance(p1, closest[k])) {
+                            if (Point.getDistance(p1, p2) < Point.getDistance(p1, closest[k])) {
                                 closest[k] = p2;
                                 placed = true;
                             }
@@ -88,9 +73,31 @@ $(function () {
             }
             p1.closest = closest;
         }
+        return points;
+    }
+  
+}
+
+$(function () {
+
+    var points=[];
+    
+    
+    // Main
+
+    var spider = new NeuronalSpider();
+    spider.initializeHeader();
+    points = spider.createPoints(points);
+    points = spider.findClosests(points);
+
+    
+    initHeader();
+    initAnimation();
+    addListeners();
+
+    function initHeader() {
 
         // assign a circle to each point
-
         for(var l in points) {
             var c = new Circle(points[l], 2 + Math.random() * 2, 'rgba(255,255,255,0.3)');
             points[l].circle = c;
