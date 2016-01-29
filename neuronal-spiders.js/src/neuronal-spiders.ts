@@ -98,9 +98,9 @@ $(function () {
     function initHeader() {
 
         // assign a circle to each point
-        for(var l in points) {
-            var c = new Circle(points[l], 2 + Math.random() * 2, 'rgba(255,255,255,0.3)');
-            points[l].circle = c;
+        for (var l in points) {
+            var circle = new Circle(points[l], 2 + Math.random() * 2, new Color(255, 255, 255, 0.3));
+            points[l].circle = circle;
         }
     }
 
@@ -152,20 +152,20 @@ $(function () {
                 // detect points in range
                 if (Math.abs(getDistance(spider.target, points[i])) < 4000) {
                     points[i].active = 0.3;
-                    points[i].circle.active = 0.6;
+                    points[i].circle.color.alpha = 0.6;
                 } else if (Math.abs(getDistance(spider.target, points[i])) < 20000) {
                     points[i].active = 0.1;
-                    points[i].circle.active = 0.3;
+                    points[i].circle.color.alpha = 0.3;
                 } else if (Math.abs(getDistance(spider.target, points[i])) < 40000) {
                     points[i].active = 0.02;
-                    points[i].circle.active = 0.1;
+                    points[i].circle.color.alpha = 0.1;
                 } else {
                     points[i].active = 0;
-                    points[i].circle.active = 0;
+                    points[i].circle.color.alpha = 0;
                 }
 
                 drawLines(points[i]);
-                points[i].circle.draw();
+                points[i].circle.draw(spider.context);
             }
         }
         requestAnimationFrame(animate);
@@ -191,25 +191,6 @@ $(function () {
             spider.context.strokeStyle = 'rgba(255,255,255,' + p.active + ')';/*TODO: Lines color*/
             spider.context.stroke();
         }
-    }
-
-    function Circle(pos, rad, color) {
-        var _this = this;
-
-        // constructor
-        (function () {
-            _this.pos = pos || null;
-            _this.radius = rad || null;
-            _this.color = color || null;
-        })();
-
-        this.draw = function () {
-            if (!_this.active) return;
-            spider.context.beginPath();
-            spider.context.arc(_this.pos.x, _this.pos.y, _this.radius, 0, 2 * Math.PI, false);
-            spider.context.fillStyle = 'rgba(255,255,255,' + _this.active + ')';/*TODO: Color dels Cercles*/
-            spider.context.fill();
-        };
     }
 
     // Util

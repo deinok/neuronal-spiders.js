@@ -6,8 +6,14 @@ class Circle {
     public radius: number;
     public color: Color;
 
+    constructor(point: GeometricPoint, radius: number,color: Color) {
+        this.point = point;
+        this.radius = radius;
+        this.color = color;
+    }
+
     public draw(canvasContext: CanvasRenderingContext2D): void {
-        if (this.isActive()) {
+        if (!this.isActive()) {
             return;
         }
         canvasContext.beginPath();
