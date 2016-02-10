@@ -82,8 +82,6 @@ class NeuronalSpider {
         return points;
     }
 
-   
-
     public drawLines(p: any): void {
         if (!p.active) return;
         for (var i in p.closest) {
@@ -95,12 +93,10 @@ class NeuronalSpider {
         }
     }
 
-
     public addListeners(): void {
         if (!('ontouchstart' in window)) {
             window.onmousemove = this.onMouseMove.bind(this);
         }
-
         window.onresize = this.onResize.bind(this);
         window.onscroll = this.onScrollCheck.bind(this);
     }
