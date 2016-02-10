@@ -27,7 +27,7 @@ $(function () {
             window.addEventListener('mousemove', mouseMove);
         }
         window.addEventListener('scroll', scrollCheck);
-        window.addEventListener('resize', resize);
+        spider.addListeners();
     }
 
     function mouseMove(e:MouseEvent) {
@@ -47,11 +47,6 @@ $(function () {
     function scrollCheck() {
         if (document.body.scrollTop > spider.height) spider.animateHeader = false;
         else spider.animateHeader = true;
-    }
-
-    function resize() {
-        spider.width = spider.canvas.width = window.innerWidth;
-        spider.height = spider.canvas.height = window.innerHeight;
     }
 
     // animation

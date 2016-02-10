@@ -82,7 +82,7 @@ class NeuronalSpider {
         return points;
     }
 
-
+   
 
     public drawLines(p: any): void {
         if (!p.active) return;
@@ -93,5 +93,15 @@ class NeuronalSpider {
             this.context.strokeStyle = 'rgba(255,255,255,' + p.active + ')';/*TODO: Lines color*/
             this.context.stroke();
         }
+    }
+
+
+    public addListeners(): any {
+        window.onresize = this.onResize.bind(this);
+    }
+
+    private onResize(event:UIEvent): void {
+        this.width = this.canvas.width = window.innerWidth;
+        this.height = this.canvas.height = window.innerHeight;
     }
 }
