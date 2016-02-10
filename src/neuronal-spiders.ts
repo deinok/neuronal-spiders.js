@@ -18,36 +18,7 @@ $(function () {
     
 
     initAnimation();
-    addListeners();
-
-
-    // Event handling
-    function addListeners() {
-        if (!('ontouchstart' in window)) {
-            window.addEventListener('mousemove', mouseMove);
-        }
-        window.addEventListener('scroll', scrollCheck);
-        spider.addListeners();
-    }
-
-    function mouseMove(e:MouseEvent) {
-        var posx = 0;
-        var posy = 0;
-        if (e.pageX || e.pageY) {
-            posx = e.pageX;
-            posy = e.pageY;
-        } else if (e.clientX || e.clientY) {
-            posx = e.clientX + document.body.scrollLeft + document.documentElement.scrollLeft;
-            posy = e.clientY + document.body.scrollTop + document.documentElement.scrollTop;
-        }
-        spider.target.x = posx;
-        spider.target.y = posy;
-    }
-
-    function scrollCheck() {
-        if (document.body.scrollTop > spider.height) spider.animateHeader = false;
-        else spider.animateHeader = true;
-    }
+    spider.addListeners();
 
     // animation
     function initAnimation() {

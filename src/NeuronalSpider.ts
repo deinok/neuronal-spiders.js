@@ -96,8 +96,35 @@ class NeuronalSpider {
     }
 
 
-    public addListeners(): any {
+    public addListeners(): void {
+        if (!('ontouchstart' in window)) {
+            window.onmousemove = this.onMouseMove.bind(this);
+        }
+
         window.onresize = this.onResize.bind(this);
+        window.onscroll = this.onScrollCheck.bind(this);
+    }
+
+    private onMouseMove(event: MouseEvent):void {
+        var posx = 0;
+        var posy = 0;
+        if (event.pageX || event.pageY) {
+            posx = event.pageX;
+            posy = event.pageY;
+        } else if (event.clientX || event.clientY) {
+            posx = event.clientX + document.body.scrollLeft + document.documentElement.scrollLeft;
+            posy = event.clientY + document.body.scrollTop + document.documentElement.scrollTop;
+        }
+        this.target.x = posx;
+        this.target.y = posy;
+    }
+
+    private onScrollCheck(event: UIEvent): void {
+        if (document.body.scrollTop > this.height) {
+            this.animateHeader = false;
+        } else {
+            this.animateHeader = true;
+        }
     }
 
     private onResize(event:UIEvent): void {
