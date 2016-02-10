@@ -54,7 +54,7 @@ $(function () {
         requestAnimationFrame(animate);
     }
 
-    function shiftPoint(p) {
+    function shiftPoint(p:Point) {
         TweenLite.to(p, 1 + 1 * Math.random(), {
             x: p.originX - 50 + Math.random() * 100,
             y: p.originY - 50 + Math.random() * 100,
