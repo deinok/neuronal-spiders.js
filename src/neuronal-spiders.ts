@@ -33,13 +33,13 @@ $(function () {
             spider.context.clearRect(0, 0, spider.width, spider.height);
             for (var i in points) {
                 // detect points in range
-                if (Math.abs(getDistance(spider.target, points[i])) < 4000) {
+                if (Math.abs(Point.getDistance(spider.target, points[i])) < 4000) {
                     points[i].active = 0.3;
                     points[i].circle.color.alpha = 0.6;
-                } else if (Math.abs(getDistance(spider.target, points[i])) < 20000) {
+                } else if (Math.abs(Point.getDistance(spider.target, points[i])) < 20000) {
                     points[i].active = 0.1;
                     points[i].circle.color.alpha = 0.3;
-                } else if (Math.abs(getDistance(spider.target, points[i])) < 40000) {
+                } else if (Math.abs(Point.getDistance(spider.target, points[i])) < 40000) {
                     points[i].active = 0.02;
                     points[i].circle.color.alpha = 0.1;
                 } else {
@@ -75,12 +75,6 @@ $(function () {
             spider.context.stroke();
         }
     }
-
-    // Util
-    function getDistance(p1, p2) {
-        return Math.pow(p1.x - p2.x, 2) + Math.pow(p1.y - p2.y, 2);
-    }
-
 });
 
 
