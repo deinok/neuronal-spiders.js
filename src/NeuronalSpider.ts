@@ -82,13 +82,15 @@ class NeuronalSpider {
         return points;
     }
 
-    public drawLines(p: any): void {
-        if (!p.active) return;
-        for (var i in p.closest) {
+    public drawLines(point: Point): void {
+        if (!point.activeOpacity) {
+            return;
+        }
+        for (var i in point.closest) {
             this.context.beginPath();
-            this.context.moveTo(p.x, p.y);
-            this.context.lineTo(p.closest[i].x, p.closest[i].y);
-            this.context.strokeStyle = 'rgba(255,255,255,' + p.active + ')';/*TODO: Lines color*/
+            this.context.moveTo(point.x, point.y);
+            this.context.lineTo(point.closest[i].x, point.closest[i].y);
+            this.context.strokeStyle = 'rgba(255,255,255,' + point.activeOpacity + ')';/*TODO: Lines color*/
             this.context.stroke();
         }
     }
@@ -127,4 +129,5 @@ class NeuronalSpider {
         this.width = this.canvas.width = window.innerWidth;
         this.height = this.canvas.height = window.innerHeight;
     }
+
 }

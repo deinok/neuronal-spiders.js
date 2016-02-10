@@ -5,7 +5,7 @@
 
 $(function () {
 
-    var points=[];
+    var points=new Array<Point>();
     
     
     // Main
@@ -34,16 +34,16 @@ $(function () {
             for (var i in points) {
                 // detect points in range
                 if (Math.abs(Point.getDistance(spider.target, points[i])) < 4000) {
-                    points[i].active = 0.3;
+                    points[i].activeOpacity = 0.3;
                     points[i].circle.color.alpha = 0.6;
                 } else if (Math.abs(Point.getDistance(spider.target, points[i])) < 20000) {
-                    points[i].active = 0.1;
+                    points[i].activeOpacity = 0.1;
                     points[i].circle.color.alpha = 0.3;
                 } else if (Math.abs(Point.getDistance(spider.target, points[i])) < 40000) {
-                    points[i].active = 0.02;
+                    points[i].activeOpacity = 0.02;
                     points[i].circle.color.alpha = 0.1;
                 } else {
-                    points[i].active = 0;
+                    points[i].activeOpacity = 0;
                     points[i].circle.color.alpha = 0;
                 }
 
@@ -62,18 +62,6 @@ $(function () {
                 shiftPoint(p);
             }
         });
-    }
-
-    // Canvas manipulation
-    function drawLines(p) {
-        if (!p.active) return;
-        for (var i in p.closest) {
-            spider.context.beginPath();
-            spider.context.moveTo(p.x, p.y);
-            spider.context.lineTo(p.closest[i].x, p.closest[i].y);
-            spider.context.strokeStyle = 'rgba(255,255,255,' + p.active + ')';/*TODO: Lines color*/
-            spider.context.stroke();
-        }
     }
 });
 
