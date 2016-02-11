@@ -35,6 +35,7 @@
     <TypeScriptCompile Include="src\Color.ts" />
     <TypeScriptCompile Include="Scripts\typings\greenshock.d.ts" />
     <TypeScriptCompile Include="src\GeometricPoint.ts" />
+    <TypeScriptCompile Include="src\Line.ts" />
     <TypeScriptCompile Include="src\neuronal-spiders.ts" />
     <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
     <TypeScriptCompile Include="src\NeuronalSpider.ts" />

@@ -2,29 +2,14 @@
 /*Requereix JQUERY 1.9*/
 
 "use strict"
-
 $(function () {
-
-    
-    
     
     // Main
-
     var spider = new NeuronalSpider();
     spider.initializeHeader();
-    spider.createPoints();
-    spider.findClosests();
-    spider.addCircles();
-    
-
-    spider.initAnimation(spider.points);
+    spider.initializePoints();
+    spider.initAnimation();
     spider.addListeners();
-
-    // animation
-
-
-
-
 });
 
 

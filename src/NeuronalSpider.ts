@@ -25,7 +25,14 @@ class NeuronalSpider {
         this.context = this.canvas.getContext('2d');
     }
 
-    public createPoints(): void {
+
+    public initializePoints(): void {
+        this.createPoints();
+        this.findClosests();
+        this.addCircles();
+    }
+
+    private createPoints(): void {
         for (var x = 0; x < this.width; x = x + this.width / 20) {
             for (var y = 0; y < this.height; y = y + this.height / 20) {
                 var px = x + Math.random() * this.width / 20;
@@ -36,7 +43,7 @@ class NeuronalSpider {
         }
     }
 
-    public findClosests(): void{
+    private findClosests(): void{
         for (var i = 0; i < this.points.length; i++) {
             var closest = [];
             var p1 = this.points[i];
@@ -67,25 +74,15 @@ class NeuronalSpider {
         }
     }
 
-    public addCircles():void {
+    private addCircles():void {
         for (var l in this.points) {
             var circle = new Circle(this.points[l], 2 + Math.random() * 2, new Color(255, 255, 255, 0.3));
             this.points[l].circle = circle;
         }
     }
 
-    public drawLines(point: Point): void {
-        if (!point.activeOpacity) {
-            return;
-        }
-        for (var i in point.closest) {
-            this.context.beginPath();
-            this.context.moveTo(point.x, point.y);
-            this.context.lineTo(point.closest[i].x, point.closest[i].y);
-            this.context.strokeStyle = 'rgba(255,255,255,' + point.activeOpacity + ')';/*TODO: Lines color*/
-            this.context.stroke();
-        }
-    }
+
+
 
     public addListeners(): void {
         if (!('ontouchstart' in window)) {
@@ -123,24 +120,15 @@ class NeuronalSpider {
     }
 
 
-    public shiftPoint(target: Point): void {
-        TweenLite.to(
-            target,
-            1 + 1 * Math.random(),
-            {
-                x: target.originX - 50 + Math.random() * 100,
-                y: target.originY - 50 + Math.random() * 100,
-                onComplete: this.shiftPoint.bind(this,target),
-            }
-        );
+
+    public initAnimation(): void {
+        this.animate();
+        for (var i in this.points) {
+            this.shiftPoint(this.points[i]);
+        }
     }
 
-    
-
-
-
-
-    public animate():void {
+    private animate(): void {
         if (this.animateHeader) {
             this.context.clearRect(0, 0, this.width, this.height);
             for (var i in this.points) {
@@ -159,20 +147,38 @@ class NeuronalSpider {
                     this.points[i].circle.color.alpha = 0;
                 }
 
-                this.drawLines(this.points[i]);
+                Line.drawLines(
+                    this.points[i],
+                    new Color(255, 255, 255, this.points[i].activeOpacity),
+                    this.context
+                );
                 this.points[i].circle.draw(this.context);
             }
         }
         requestAnimationFrame(this.animate.bind(this));
     }
 
-
-    public initAnimation():void {
-        this.animate();
-        for (var i in points) {
-            this.shiftPoint(points[i]);
-        }
+    private shiftPoint(target: Point): void {
+        TweenLite.to(
+            target,
+            1 + 1 * Math.random(),
+            {
+                x: target.originX - 50 + Math.random() * 100,
+                y: target.originY - 50 + Math.random() * 100,
+                onComplete: this.shiftPoint.bind(this,target),
+            }
+        );
     }
+
+    
+
+
+
+
+
+
+
+
 
 
 }
