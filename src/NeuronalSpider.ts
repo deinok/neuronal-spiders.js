@@ -11,7 +11,7 @@ class NeuronalSpider {
     public animateHeader: boolean = true;
 
     public initializeHeader(): void {
-
+        this.points = new Array<Point>();
         this.width = window.innerWidth;
         this.height = window.innerHeight;
         this.target = new Point(
@@ -25,24 +25,23 @@ class NeuronalSpider {
         this.context = this.canvas.getContext('2d');
     }
 
-    public createPoints(points: Point[]): Point[] {
+    public createPoints(): void {
         for (var x = 0; x < this.width; x = x + this.width / 20) {
             for (var y = 0; y < this.height; y = y + this.height / 20) {
                 var px = x + Math.random() * this.width / 20;
                 var py = y + Math.random() * this.height / 20;
                 var p = new Point(px, py);
-                points.push(p);
+                this.points.push(p);
             }
         }
-        return points;
     }
 
-    public findClosests(points: Point[]): Point[] {
-        for (var i = 0; i < points.length; i++) {
+    public findClosests(): void{
+        for (var i = 0; i < this.points.length; i++) {
             var closest = [];
-            var p1 = points[i];
-            for (var j = 0; j < points.length; j++) {
-                var p2 = points[j]
+            var p1 = this.points[i];
+            for (var j = 0; j < this.points.length; j++) {
+                var p2 = this.points[j]
                 if (!(p1 == p2)) {
                     var placed = false;
                     for (var k = 0; k < 5; k++) {
@@ -66,7 +65,6 @@ class NeuronalSpider {
             }
             p1.closest = closest;
         }
-        return points;
     }
 
     public addCircles(points: Point[]): Point[] {

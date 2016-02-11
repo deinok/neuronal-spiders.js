@@ -5,19 +5,19 @@
 
 $(function () {
 
-    var points=new Array<Point>();
+    
     
     
     // Main
 
     var spider = new NeuronalSpider();
     spider.initializeHeader();
-    points = spider.createPoints(points);
-    points = spider.findClosests(points);
-    points = spider.addCircles(points);
+    spider.createPoints();
+    spider.findClosests(spider.points);
+    spider.addCircles(spider.points);
     
 
-    spider.initAnimation(points);
+    spider.initAnimation(spider.points);
     spider.addListeners();
 
     // animation
