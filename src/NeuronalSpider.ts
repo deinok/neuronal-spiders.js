@@ -140,35 +140,35 @@ class NeuronalSpider {
 
 
 
-    public animate(points:Point[]):void {
+    public animate():void {
         if (this.animateHeader) {
             this.context.clearRect(0, 0, this.width, this.height);
-            for (var i in points) {
+            for (var i in this.points) {
                 // detect points in range
-                if (Math.abs(Point.getDistance(this.target, points[i])) < 4000) {
-                    points[i].activeOpacity = 0.3;
-                    points[i].circle.color.alpha = 0.6;
-                } else if (Math.abs(Point.getDistance(this.target, points[i])) < 20000) {
-                    points[i].activeOpacity = 0.1;
-                    points[i].circle.color.alpha = 0.3;
-                } else if (Math.abs(Point.getDistance(this.target, points[i])) < 40000) {
-                    points[i].activeOpacity = 0.02;
-                    points[i].circle.color.alpha = 0.1;
+                if (Math.abs(Point.getDistance(this.target, this.points[i])) < 4000) {
+                    this.points[i].activeOpacity = 0.3;
+                    this.points[i].circle.color.alpha = 0.6;
+                } else if (Math.abs(Point.getDistance(this.target, this.points[i])) < 20000) {
+                    this.points[i].activeOpacity = 0.1;
+                    this.points[i].circle.color.alpha = 0.3;
+                } else if (Math.abs(Point.getDistance(this.target, this.points[i])) < 40000) {
+                    this.points[i].activeOpacity = 0.02;
+                    this.points[i].circle.color.alpha = 0.1;
                 } else {
-                    points[i].activeOpacity = 0;
-                    points[i].circle.color.alpha = 0;
+                    this.points[i].activeOpacity = 0;
+                    this.points[i].circle.color.alpha = 0;
                 }
 
-                this.drawLines(points[i]);
-                points[i].circle.draw(this.context);
+                this.drawLines(this.points[i]);
+                this.points[i].circle.draw(this.context);
             }
         }
-        requestAnimationFrame(this.animate.bind(this,points));
+        requestAnimationFrame(this.animate.bind(this));
     }
 
 
-    public initAnimation(points:Point[]):void {
-        this.animate(points);
+    public initAnimation():void {
+        this.animate();
         for (var i in points) {
             this.shiftPoint(points[i]);
         }
