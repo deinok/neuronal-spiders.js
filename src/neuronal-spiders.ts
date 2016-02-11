@@ -22,37 +22,13 @@ $(function () {
 
     // animation
     function initAnimation() {
-        animate();
+        spider.animate(points);
         for (var i in points) {
             spider.shiftPoint(points[i]);
         }
     }
 
-    function animate() {
-        if (spider.animateHeader) {
-            spider.context.clearRect(0, 0, spider.width, spider.height);
-            for (var i in points) {
-                // detect points in range
-                if (Math.abs(Point.getDistance(spider.target, points[i])) < 4000) {
-                    points[i].activeOpacity = 0.3;
-                    points[i].circle.color.alpha = 0.6;
-                } else if (Math.abs(Point.getDistance(spider.target, points[i])) < 20000) {
-                    points[i].activeOpacity = 0.1;
-                    points[i].circle.color.alpha = 0.3;
-                } else if (Math.abs(Point.getDistance(spider.target, points[i])) < 40000) {
-                    points[i].activeOpacity = 0.02;
-                    points[i].circle.color.alpha = 0.1;
-                } else {
-                    points[i].activeOpacity = 0;
-                    points[i].circle.color.alpha = 0;
-                }
 
-                spider.drawLines(points[i]);
-                points[i].circle.draw(spider.context);
-            }
-        }
-        requestAnimationFrame(animate);
-    }
 
 });
 
