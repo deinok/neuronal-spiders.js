@@ -67,12 +67,11 @@ class NeuronalSpider {
         }
     }
 
-    public addCircles(points: Point[]): Point[] {
-        for (var l in points) {
-            var circle = new Circle(points[l], 2 + Math.random() * 2, new Color(255, 255, 255, 0.3));
-            points[l].circle = circle;
+    public addCircles():void {
+        for (var l in this.points) {
+            var circle = new Circle(this.points[l], 2 + Math.random() * 2, new Color(255, 255, 255, 0.3));
+            this.points[l].circle = circle;
         }
-        return points;
     }
 
     public drawLines(point: Point): void {

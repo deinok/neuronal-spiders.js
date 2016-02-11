@@ -13,8 +13,8 @@ $(function () {
     var spider = new NeuronalSpider();
     spider.initializeHeader();
     spider.createPoints();
-    spider.findClosests(spider.points);
-    spider.addCircles(spider.points);
+    spider.findClosests();
+    spider.addCircles();
     
 
     spider.initAnimation(spider.points);
