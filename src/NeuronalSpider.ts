@@ -143,7 +143,7 @@ class NeuronalSpider {
 
 
 
-    public animate(points:Point[]) {
+    public animate(points:Point[]):void {
         if (this.animateHeader) {
             this.context.clearRect(0, 0, this.width, this.height);
             for (var i in points) {
@@ -170,7 +170,12 @@ class NeuronalSpider {
     }
 
 
-
+    public initAnimation(points:Point[]):void {
+        this.animate(points);
+        for (var i in points) {
+            this.shiftPoint(points[i]);
+        }
+    }
 
 
 }

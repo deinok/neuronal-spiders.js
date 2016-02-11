@@ -17,16 +17,11 @@ $(function () {
     points = spider.addCircles(points);
     
 
-    initAnimation();
+    spider.initAnimation(points);
     spider.addListeners();
 
     // animation
-    function initAnimation() {
-        spider.animate(points);
-        for (var i in points) {
-            spider.shiftPoint(points[i]);
-        }
-    }
+
 
 
 
