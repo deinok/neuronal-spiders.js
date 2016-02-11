@@ -125,4 +125,17 @@ class NeuronalSpider {
         this.height = this.canvas.height = window.innerHeight;
     }
 
+
+    public shiftPoint(target: Point): void {
+        TweenLite.to(
+            target,
+            1 + 1 * Math.random(),
+            {
+                x: target.originX - 50 + Math.random() * 100,
+                y: target.originY - 50 + Math.random() * 100,
+                onComplete: this.shiftPoint.bind(this,target),
+            }
+        );
+    }
+
 }

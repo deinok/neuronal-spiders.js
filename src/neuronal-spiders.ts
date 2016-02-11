@@ -24,7 +24,7 @@ $(function () {
     function initAnimation() {
         animate();
         for (var i in points) {
-            shiftPoint(points[i]);
+            spider.shiftPoint(points[i]);
         }
     }
 
@@ -54,15 +54,6 @@ $(function () {
         requestAnimationFrame(animate);
     }
 
-    function shiftPoint(p:Point) {
-        TweenLite.to(p, 1 + 1 * Math.random(), {
-            x: p.originX - 50 + Math.random() * 100,
-            y: p.originY - 50 + Math.random() * 100,
-            onComplete: function () {
-                shiftPoint(p);
-            }
-        });
-    }
 });
 
 
