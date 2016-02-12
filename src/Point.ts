@@ -1,5 +1,8 @@
 ﻿"use strict"
 
+/**
+ * Represents a Point in Canvas
+ */
 class Point implements GeometricPoint {
 
     public x: number;
@@ -19,15 +22,10 @@ class Point implements GeometricPoint {
         return this.activeOpacity != 0;
     }
 
-    public drawLines(context:CanvasRenderingContext2D):void {
-        if (!this.isActive()) return;
-        for (var closestPoint in this.closest) {
-            context.beginPath();
-            context.moveTo(this.x, this.y);
-            context.lineTo(closestPoint.x, closestPoint.y);
-            context.strokeStyle = 'rgba(255,255,255,' + this.activeOpacity + ')';/*TODO: Lines color*/
-            context.stroke();
-        }
+    public static getAbsolutDistance(point1: GeometricPoint, point2: GeometricPoint): number {
+        return Math.abs(
+            Point.getDistance(point1, point2)
+        );
     }
 
     public static getDistance(point1: GeometricPoint, point2: GeometricPoint): number {

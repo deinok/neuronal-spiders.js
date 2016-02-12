@@ -141,7 +141,7 @@ class NeuronalSpider {
         if (this.animateHeader) {
             this.context.clearRect(0, 0, this.width, this.height);
             for (var i in this.points) {
-                var distance = Math.abs(Point.getDistance(this.target,this.points[i]));
+                var distance = Point.getAbsolutDistance(this.target,this.points[i]);
                 if (distance < 4000) {
                     this.points[i].activeOpacity = 0.3;
                     this.points[i].circle.color.alpha = 0.6;
