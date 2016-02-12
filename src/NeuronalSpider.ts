@@ -44,7 +44,7 @@ class NeuronalSpider {
     }
 
     private findClosests(): void{
-        for (var i = 0; i < this.points.length; i++) {
+        for (var i in this.points) {
             var closest = [];
             var p1 = this.points[i];
             for (var j = 0; j < this.points.length; j++) {
