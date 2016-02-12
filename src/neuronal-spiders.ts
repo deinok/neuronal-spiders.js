@@ -4,6 +4,9 @@
 "use strict"
 $(function () {
     var a = NeuronalSpiderConfiguration.searchNeuronalSpiderElements();
+    for (var i in a) {
+        var spidertmp = NeuronalSpiderConfiguration.readConfiguration(<HTMLElement>a.item(i));
+    }
     // Main
     var spider = new NeuronalSpider();
     spider.initializeHeader();

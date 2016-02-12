@@ -78,7 +78,7 @@ class NeuronalSpider {
         for (var l in this.points) {
             var circle = new Circle(
                 this.points[l],
-                2 + Math.random() * 2,
+                this.configuration.circleRadius + Math.random() * 2,
                 new Color(
                     this.configuration.circleColor.red,
                     this.configuration.circleColor.green,
@@ -142,13 +142,13 @@ class NeuronalSpider {
             this.context.clearRect(0, 0, this.width, this.height);
             for (var i in this.points) {
                 var distance = Point.getAbsolutDistance(this.target,this.points[i]);
-                if (distance < 4000) {
+                if (distance < this.configuration.visualRadius/10) {
                     this.points[i].activeOpacity = 0.3;
                     this.points[i].circle.color.alpha = 0.6;
-                } else if (distance < 20000) {
+                } else if (distance < this.configuration.visualRadius/2) {
                     this.points[i].activeOpacity = 0.1;
                     this.points[i].circle.color.alpha = 0.3;
-                } else if (distance < 40000) {
+                } else if (distance < this.configuration.visualRadius) {
                     this.points[i].activeOpacity = 0.02;
                     this.points[i].circle.color.alpha = 0.1;
                 } else {
