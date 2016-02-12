@@ -28,6 +28,8 @@
     <Content Include="Tests\Test1\test1.html" />
     <Content Include=".bowerrc" />
     <Content Include="bower.json" />
+    <Content Include="Tests\Test2\test2.css" />
+    <Content Include="Tests\Test2\test2.html" />
     <Content Include="web.config" />
   </ItemGroup>
   <ItemGroup>

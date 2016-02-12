@@ -1,0 +1,11 @@
+﻿body {
+	margin: 0;
+	background-color:transparent;
+}
+
+canvas {
+	background-color: transparent;
+	width: 50%;
+	height: 100%;
+	float:left;
+}

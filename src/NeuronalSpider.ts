@@ -7,17 +7,27 @@ class NeuronalSpider {
     public canvas: HTMLCanvasElement;
     public context: CanvasRenderingContext2D;
     public points: Point[];
-    public target: GeometricPoint;
+    public targetMouse: GeometricPoint;
     public animateHeader: boolean = true;
     public configuration:NeuronalSpiderConfiguration;
 
+    public constructor(configuration: NeuronalSpiderConfiguration) {
+        this.configuration = configuration;
+    }
+
+    public initialize(): void {
+        this.initializeHeader();
+        this.initializePoints();
+        this.initAnimation();
+        this.addListeners();
+    }
+
     public initializeHeader(): void {
-        this.configuration = new NeuronalSpiderConfiguration(true);
-        this.points = new Array<Point>();
-        this.canvas = <HTMLCanvasElement>document.getElementById('spiders');
+        this.points = new Array<Point>(this.configuration.numberPoints);
+        this.canvas = <HTMLCanvasElement>this.configuration.targetElement;
         this.canvas.width = this.width = window.innerWidth;
         this.canvas.height = this.height = window.innerHeight;
-        this.target = new Point(
+        this.targetMouse = new Point(
             window.innerWidth / 2,
             window.innerHeight / 3
         );
@@ -32,11 +42,12 @@ class NeuronalSpider {
     }
 
     private createPoints(): void {
-        for (var x = 0; x < this.width; x = x + this.width / 20) {
-            for (var y = 0; y < this.height; y = y + this.height / 20) {
+        var pointsPerDistance = Math.sqrt(this.configuration.numberPoints);
+        for (var x = 0; x < this.width; x = x + this.width / pointsPerDistance) {
+            for (var y = 0; y < this.height; y = y + this.height / pointsPerDistance) {
                 var point = new Point(
-                    x + Math.random() * this.width / 20,
-                    y + Math.random() * this.height / 20
+                    x + Math.random() * this.width / pointsPerDistance,
+                    y + Math.random() * this.height / pointsPerDistance
                 );
                 this.points.push(point);
             }
@@ -111,8 +122,8 @@ class NeuronalSpider {
             posx = event.clientX + document.body.scrollLeft + document.documentElement.scrollLeft;
             posy = event.clientY + document.body.scrollTop + document.documentElement.scrollTop;
         }
-        this.target.x = posx;
-        this.target.y = posy;
+        this.targetMouse.x = posx;
+        this.targetMouse.y = posy;
     }
 
     private onScrollCheck(event: UIEvent): void {
@@ -141,7 +152,7 @@ class NeuronalSpider {
         if (this.animateHeader) {
             this.context.clearRect(0, 0, this.width, this.height);
             for (var i in this.points) {
-                var distance = Point.getAbsolutDistance(this.target,this.points[i]);
+                var distance = Point.getAbsolutDistance(this.targetMouse,this.points[i]);
                 if (distance < this.configuration.visualRadius/10) {
                     this.points[i].activeOpacity = 0.3;
                     this.points[i].circle.color.alpha = 0.6;

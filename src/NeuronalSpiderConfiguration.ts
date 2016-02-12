@@ -5,8 +5,8 @@
  */
 class NeuronalSpiderConfiguration {
 
-    public enabled: boolean = true;
     public targetElement: HTMLElement;
+    public enabled: boolean = true;
     public numberPoints: number = 400;
     public numberLines: number = 5;
     public visualRadius: number = 40000;
@@ -14,25 +14,18 @@ class NeuronalSpiderConfiguration {
     public circleColor: Color=Color.FromHex("#000000");
     public linesColor: Color = Color.FromHex("#000000");
 
-    public constructor(enabled:boolean) {
+    public constructor(htmlElement: HTMLElement, enabled: boolean) {
+        this.targetElement = htmlElement;
         this.enabled = enabled;
     }
 
-    public static createNeuronalSpiderConfiguration(targetElement: HTMLElement, numberPoints: number, numberLines: number, visualRadius: number,circleRadius:number, circleColor: Color, linesColor: Color):NeuronalSpiderConfiguration {
-        var configuration= new NeuronalSpiderConfiguration(true);
-        configuration.targetElement = targetElement;
-        configuration.numberPoints = numberPoints;
-        configuration.numberLines = numberLines;
-        configuration.visualRadius = visualRadius;
-        configuration.circleRadius = circleRadius;
-        configuration.circleColor = circleColor;
-        configuration.linesColor = linesColor;
-        return configuration;
-    }
-
+    /**
+     * Return a NeuronaSpiderConfiguration oa the given NeuronalSpiderConfiguration
+     * @param htmlElement
+     */
     public static readConfiguration(htmlElement: HTMLElement): NeuronalSpiderConfiguration {
         if (htmlElement.dataset['neuronal']=="enabled") {
-            var result = new NeuronalSpiderConfiguration(true);
+            var result = new NeuronalSpiderConfiguration(htmlElement,true);
 
             var numberPoints = htmlElement.dataset['numberPoints'];
             if (numberPoints != null) {
@@ -70,14 +63,19 @@ class NeuronalSpiderConfiguration {
             if (linesColor != null) {
                 result.linesColor = Color.FromHex(linesColor);
             }
+
             return result;
         }
-        return new NeuronalSpiderConfiguration(false);
+        return new NeuronalSpiderConfiguration(htmlElement,false);
     }
 
-    public static searchNeuronalSpiderElements(): NodeListOf<Element> {
+    /**
+     * Search all data-neuronal=enabled and return its HTMLElement
+     */
+    public static searchNeuronalSpiderElements(): HTMLElement[] {
         try {
-            return document.querySelectorAll('[data-neuronal="enabled"]');
+            var nodeList = <NodeListOf<HTMLElement>>document.querySelectorAll('[data-neuronal="enabled"]');
+            return Array.prototype.slice.call(nodeList);
         } catch (Exception){
             return null;
         }

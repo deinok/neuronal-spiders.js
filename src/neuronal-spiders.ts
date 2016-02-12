@@ -3,16 +3,12 @@
 
 "use strict"
 $(function () {
-    var a = NeuronalSpiderConfiguration.searchNeuronalSpiderElements();
-    for (var i in a) {
-        var spidertmp = NeuronalSpiderConfiguration.readConfiguration(<HTMLElement>a.item(i));
+    var neuronalElements = NeuronalSpiderConfiguration.searchNeuronalSpiderElements();
+    for (var i in neuronalElements) {
+        var configuration = NeuronalSpiderConfiguration.readConfiguration(neuronalElements[i]);
+        var spider = new NeuronalSpider(configuration);
+        spider.initialize();
     }
-    // Main
-    var spider = new NeuronalSpider();
-    spider.initializeHeader();
-    spider.initializePoints();
-    spider.initAnimation();
-    spider.addListeners();
 });
 
 
