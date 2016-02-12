@@ -41,6 +41,9 @@ class NeuronalSpider {
         this.addCircles();
     }
 
+    /**
+     * Creates the Points
+     */
     private createPoints(): void {
         var pointsPerDistance = Math.sqrt(this.configuration.numberPoints);
         for (var x = 0; x < this.width; x = x + this.width / pointsPerDistance) {
@@ -62,7 +65,7 @@ class NeuronalSpider {
                 var p2 = this.points[j]
                 if (!(p1 == p2)) {
                     var placed = false;
-                    for (var k = 0; k < 5; k++) {
+                    for (var k = 0; k < this.configuration.numberLines; k++) {
                         if (!placed) {
                             if (closest[k] == undefined) {
                                 closest[k] = p2;
@@ -71,7 +74,7 @@ class NeuronalSpider {
                         }
                     }
 
-                    for (var k = 0; k < 5; k++) {
+                    for (var k = 0; k < this.configuration.numberLines; k++) {
                         if (!placed) {
                             if (Point.getDistance(p1, p2) < Point.getDistance(p1, closest[k])) {
                                 closest[k] = p2;
