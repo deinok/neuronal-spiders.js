@@ -3,7 +3,7 @@
 
 "use strict"
 $(function () {
-    
+    var a = NeuronalSpiderConfiguration.searchNeuronalSpiderElements();
     // Main
     var spider = new NeuronalSpider();
     spider.initializeHeader();

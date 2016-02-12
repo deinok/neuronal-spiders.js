@@ -12,18 +12,15 @@ class NeuronalSpider {
     public configuration:NeuronalSpiderConfiguration;
 
     public initializeHeader(): void {
-        this.configuration = new NeuronalSpiderConfiguration();
+        this.configuration = new NeuronalSpiderConfiguration(true);
         this.points = new Array<Point>();
-        this.width = window.innerWidth;
-        this.height = window.innerHeight;
+        this.canvas = <HTMLCanvasElement>document.getElementById('spiders');
+        this.canvas.width = this.width = window.innerWidth;
+        this.canvas.height = this.height = window.innerHeight;
         this.target = new Point(
             window.innerWidth / 2,
             window.innerHeight / 3
         );
-
-        this.canvas = <HTMLCanvasElement>document.getElementById('spiders');
-        this.canvas.width = window.innerWidth;
-        this.canvas.height = window.innerHeight;
         this.context = this.canvas.getContext('2d');
     }
 
@@ -37,10 +34,11 @@ class NeuronalSpider {
     private createPoints(): void {
         for (var x = 0; x < this.width; x = x + this.width / 20) {
             for (var y = 0; y < this.height; y = y + this.height / 20) {
-                var px = x + Math.random() * this.width / 20;
-                var py = y + Math.random() * this.height / 20;
-                var p = new Point(px, py);
-                this.points.push(p);
+                var point = new Point(
+                    x + Math.random() * this.width / 20,
+                    y + Math.random() * this.height / 20
+                );
+                this.points.push(point);
             }
         }
     }

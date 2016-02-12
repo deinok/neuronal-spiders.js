@@ -13,12 +13,12 @@ class NeuronalSpiderConfiguration {
     public circleColor: Color=Color.FromHex("#000000");
     public linesColor: Color = Color.FromHex("#000000");
 
-    public constructor() {
-
+    public constructor(enabled:boolean) {
+        this.enabled = enabled;
     }
 
     public static createNeuronalSpiderConfiguration(targetElement: HTMLElement, numberPoints: number, numberLines: number, visualRadius: number, circleColor: Color, linesColor: Color):NeuronalSpiderConfiguration {
-        var configuration= new NeuronalSpiderConfiguration();
+        var configuration= new NeuronalSpiderConfiguration(true);
         configuration.targetElement = targetElement;
         configuration.numberPoints = numberPoints;
         configuration.numberLines = numberLines;
@@ -28,4 +28,18 @@ class NeuronalSpiderConfiguration {
         return configuration;
     }
 
+    public static readConfiguration(htmlElement: HTMLElement): NeuronalSpiderConfiguration {
+        if (htmlElement.dataset['enabled']) {
+            var result = new NeuronalSpiderConfiguration(true);
+        }
+        return new NeuronalSpiderConfiguration(false);
+    }
+
+    public static searchNeuronalSpiderElements(): NodeListOf<Element> {
+        try {
+            return document.querySelectorAll('[data-neuronal="enabled"]');
+        } catch (Exception){
+            return null;
+        }
+    }
 }
