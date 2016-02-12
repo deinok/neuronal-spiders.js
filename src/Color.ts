@@ -31,7 +31,7 @@ class Color {
      * Create a color from its HEX string (#012345)
      * @param hex The Hex string with sharp
      */
-    private static FromHex(hex: string): Color {
+    public static FromHex(hex: string): Color {
         var shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
         hex = hex.replace(shorthandRegex, function (m, r, g, b) {
             return r + r + g + g + b + b;

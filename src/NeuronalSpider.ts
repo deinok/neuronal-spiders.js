@@ -9,8 +9,10 @@ class NeuronalSpider {
     public points: Point[];
     public target: GeometricPoint;
     public animateHeader: boolean = true;
+    public configuration:NeuronalSpiderConfiguration;
 
     public initializeHeader(): void {
+        this.configuration = new NeuronalSpiderConfiguration();
         this.points = new Array<Point>();
         this.width = window.innerWidth;
         this.height = window.innerHeight;
@@ -76,7 +78,16 @@ class NeuronalSpider {
 
     private addCircles():void {
         for (var l in this.points) {
-            var circle = new Circle(this.points[l], 2 + Math.random() * 2, new Color(255, 255, 255, 0.3));
+            var circle = new Circle(
+                this.points[l],
+                2 + Math.random() * 2,
+                new Color(
+                    this.configuration.circleColor.red,
+                    this.configuration.circleColor.green,
+                    this.configuration.circleColor.blue,
+                    1
+                )
+            );
             this.points[l].circle = circle;
         }
     }
@@ -132,14 +143,14 @@ class NeuronalSpider {
         if (this.animateHeader) {
             this.context.clearRect(0, 0, this.width, this.height);
             for (var i in this.points) {
-                // detect points in range
-                if (Math.abs(Point.getDistance(this.target, this.points[i])) < 4000) {
+                var distance = Math.abs(Point.getDistance(this.target,this.points[i]));
+                if (distance < 4000) {
                     this.points[i].activeOpacity = 0.3;
                     this.points[i].circle.color.alpha = 0.6;
-                } else if (Math.abs(Point.getDistance(this.target, this.points[i])) < 20000) {
+                } else if (distance < 20000) {
                     this.points[i].activeOpacity = 0.1;
                     this.points[i].circle.color.alpha = 0.3;
-                } else if (Math.abs(Point.getDistance(this.target, this.points[i])) < 40000) {
+                } else if (distance < 40000) {
                     this.points[i].activeOpacity = 0.02;
                     this.points[i].circle.color.alpha = 0.1;
                 } else {
@@ -149,7 +160,12 @@ class NeuronalSpider {
 
                 Line.drawLines(
                     this.points[i],
-                    new Color(255, 255, 255, this.points[i].activeOpacity),
+                    new Color(
+                        this.configuration.linesColor.red,
+                        this.configuration.linesColor.green,
+                        this.configuration.linesColor.blue,
+                        this.points[i].activeOpacity
+                    ),
                     this.context
                 );
                 this.points[i].circle.draw(this.context);

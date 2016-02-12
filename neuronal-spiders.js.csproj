@@ -39,6 +39,7 @@
     <TypeScriptCompile Include="src\neuronal-spiders.ts" />
     <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
     <TypeScriptCompile Include="src\NeuronalSpider.ts" />
+    <TypeScriptCompile Include="src\NeuronalSpiderConfiguration.ts" />
     <TypeScriptCompile Include="src\Point.ts" />
   </ItemGroup>
   <ItemGroup>
