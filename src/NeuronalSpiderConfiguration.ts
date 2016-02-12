@@ -10,6 +10,7 @@ class NeuronalSpiderConfiguration {
     public numberPoints: number = 400;
     public numberLines: number = 5;
     public visualRadius: number = 40000;
+    public maximumOpacity: number = 0.6;
     public circleRadius: number = 2;
     public circleColor: Color=Color.FromHex("#000000");
     public linesColor: Color = Color.FromHex("#000000");
@@ -40,6 +41,11 @@ class NeuronalSpiderConfiguration {
             var visualRadius = htmlElement.dataset['visualRadius'];
             if (visualRadius != null) {
                 result.visualRadius = parseInt(visualRadius);
+            }
+            
+            var maximumOpacity = htmlElement.dataset['maximumOpacity'];
+            if (maximumOpacity != null){
+                result.maximumOpacity = parseInt(maximumOpacity);
             }
 
             var circleRadius = htmlElement.dataset['circleRadius'];

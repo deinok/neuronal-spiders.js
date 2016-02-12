@@ -57,6 +57,9 @@ class NeuronalSpider {
         }
     }
 
+    /**
+     * Find the closestPoints
+     */
     private findClosests(): void{
         for (var i in this.points) {
             var closest = [];
@@ -88,10 +91,13 @@ class NeuronalSpider {
         }
     }
 
+    /**
+     * Add Circles to every Point
+     */
     private addCircles():void {
-        for (var l in this.points) {
+        for (var i in this.points) {
             var circle = new Circle(
-                this.points[l],
+                this.points[i],
                 this.configuration.circleRadius + Math.random() * 2,
                 new Color(
                     this.configuration.circleColor.red,
@@ -100,13 +106,13 @@ class NeuronalSpider {
                     1
                 )
             );
-            this.points[l].circle = circle;
+            this.points[i].circle = circle;
         }
     }
 
-
-
-
+    /**
+     * Adds Listeners
+     */
     public addListeners(): void {
         if (!('ontouchstart' in window)) {
             window.onmousemove = this.onMouseMove.bind(this);
@@ -154,35 +160,59 @@ class NeuronalSpider {
     private animate(): void {
         if (this.animateHeader) {
             this.context.clearRect(0, 0, this.width, this.height);
+
             for (var i in this.points) {
-                var distance = Point.getAbsolutDistance(this.targetMouse,this.points[i]);
-                if (distance < this.configuration.visualRadius/10) {
-                    this.points[i].activeOpacity = 0.3;
-                    this.points[i].circle.color.alpha = 0.6;
-                } else if (distance < this.configuration.visualRadius/2) {
-                    this.points[i].activeOpacity = 0.1;
-                    this.points[i].circle.color.alpha = 0.3;
+                var maxOpacity = this.configuration.maximumOpacity;
+                var distance = Point.getAbsolutDistance(this.targetMouse, this.points[i]);
+
+                var opacity = 0;
+                
+                if (distance < this.configuration.visualRadius / 10) {
+                    opacity = (maxOpacity / 10) * 10;
+                } else if (distance < this.configuration.visualRadius / 9) {
+                    opacity = (maxOpacity / 10) * 9;
+                } else if (distance < this.configuration.visualRadius / 8) {
+                    opacity = (maxOpacity / 10) * 8;
+                } else if (distance < this.configuration.visualRadius / 7) {
+                    opacity = (maxOpacity / 10) * 7;
+                } else if (distance < this.configuration.visualRadius / 6){
+                    opacity = (maxOpacity / 10) * 6;
+                } else if (distance < this.configuration.visualRadius / 5) {
+                    opacity = (maxOpacity / 10) * 5;
+                } else if (distance < this.configuration.visualRadius / 4) {
+                    opacity = (maxOpacity / 10) * 4;
+                } else if (distance < this.configuration.visualRadius / 3) {
+                    opacity = (maxOpacity / 10) * 3;
+                } else if (distance < this.configuration.visualRadius / 2) {
+                    opacity = (maxOpacity / 10) * 2;
                 } else if (distance < this.configuration.visualRadius) {
-                    this.points[i].activeOpacity = 0.02;
-                    this.points[i].circle.color.alpha = 0.1;
+                    opacity = (maxOpacity / 10) * 1;
                 } else {
-                    this.points[i].activeOpacity = 0;
-                    this.points[i].circle.color.alpha = 0;
+                    opacity = (maxOpacity / 10) * 0;
                 }
 
-                Line.drawLines(
-                    this.points[i],
-                    new Color(
-                        this.configuration.linesColor.red,
-                        this.configuration.linesColor.green,
-                        this.configuration.linesColor.blue,
-                        this.points[i].activeOpacity
-                    ),
-                    this.context
-                );
-                this.points[i].circle.draw(this.context);
+                this.points[i].circle.color.alpha = opacity;
+                this.points[i].activeOpacity = opacity/2;
+
+                if (this.points[i].isActive()) {
+                    Line.drawLines(
+                        this.points[i],
+                        new Color(
+                            this.configuration.linesColor.red,
+                            this.configuration.linesColor.green,
+                            this.configuration.linesColor.blue,
+                            this.points[i].activeOpacity
+                        ),
+                        this.context
+                    );
+                }
+                if (this.points[i].circle.isActive()) {
+                    this.points[i].circle.draw(this.context);
+                }
             }
+
         }
+
         requestAnimationFrame(this.animate.bind(this));
     }
 
