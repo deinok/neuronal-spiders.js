@@ -23,7 +23,7 @@ class NeuronalSpider {
     }
 
     public initializeHeader(): void {
-        this.points = new Array<Point>(this.configuration.numberPoints);
+        this.points = new Array<Point>();
         this.canvas = <HTMLCanvasElement>this.configuration.targetElement;
         this.canvas.width = this.width = window.innerWidth;
         this.canvas.height = this.height = window.innerHeight;
@@ -46,8 +46,8 @@ class NeuronalSpider {
      */
     private createPoints(): void {
         var pointsPerDistance = Math.sqrt(this.configuration.numberPoints);
-        for (var x = 0; x < this.width; x = x + this.width / pointsPerDistance) {
-            for (var y = 0; y < this.height; y = y + this.height / pointsPerDistance) {
+        for (var x = 0; x < this.width; x += this.width / pointsPerDistance) {
+            for (var y = 0; y < this.height; y += this.height / pointsPerDistance) {
                 var point = new Point(
                     x + Math.random() * this.width / pointsPerDistance,
                     y + Math.random() * this.height / pointsPerDistance
@@ -169,7 +169,12 @@ class NeuronalSpider {
                 
                 if (distance < this.configuration.visualRadius / 10) {
                     opacity = (maxOpacity / 10) * 10;
-                } else if (distance < this.configuration.visualRadius / 9) {
+                }
+
+
+
+
+                else if (distance < this.configuration.visualRadius / 9) {
                     opacity = (maxOpacity / 10) * 9;
                 } else if (distance < this.configuration.visualRadius / 8) {
                     opacity = (maxOpacity / 10) * 8;
@@ -187,7 +192,12 @@ class NeuronalSpider {
                     opacity = (maxOpacity / 10) * 2;
                 } else if (distance < this.configuration.visualRadius) {
                     opacity = (maxOpacity / 10) * 1;
-                } else {
+                }
+
+
+
+
+                else {
                     opacity = (maxOpacity / 10) * 0;
                 }
 

@@ -4,10 +4,12 @@
 "use strict"
 $(function () {
     var neuronalElements = NeuronalSpiderConfiguration.searchNeuronalSpiderElements();
+    var neuronalSpiders = new Array<NeuronalSpider>(neuronalElements.length);
     for (var i in neuronalElements) {
         var configuration = NeuronalSpiderConfiguration.readConfiguration(neuronalElements[i]);
         var spider = new NeuronalSpider(configuration);
-        spider.initialize();
+        neuronalSpiders[i]=spider;
+        neuronalSpiders[i].initialize();
     }
 });
 
