@@ -121,18 +121,14 @@ class NeuronalSpider {
         window.onscroll = this.onScrollCheck.bind(this);
     }
 
-    private onMouseMove(event: MouseEvent):void {
-        var posx = 0;
-        var posy = 0;
+    private onMouseMove(event: MouseEvent): void {
         if (event.pageX || event.pageY) {
-            posx = event.pageX;
-            posy = event.pageY;
+            this.targetMouse.x = event.pageX;
+            this.targetMouse.y = event.pageY;
         } else if (event.clientX || event.clientY) {
-            posx = event.clientX + document.body.scrollLeft + document.documentElement.scrollLeft;
-            posy = event.clientY + document.body.scrollTop + document.documentElement.scrollTop;
+            this.targetMouse.x = event.clientX + document.body.scrollLeft + document.documentElement.scrollLeft;
+            this.targetMouse.y = event.clientY + document.body.scrollTop + document.documentElement.scrollTop;
         }
-        this.targetMouse.x = posx;
-        this.targetMouse.y = posy;
     }
 
     private onScrollCheck(event: UIEvent): void {
