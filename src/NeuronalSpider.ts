@@ -2,6 +2,7 @@
 
 class NeuronalSpider {
 
+    public configuration: NeuronalSpiderConfiguration;
     public width: number;
     public height: number;
     public canvas: HTMLCanvasElement;
@@ -9,7 +10,6 @@ class NeuronalSpider {
     public points: Point[];
     public targetMouse: GeometricPoint;
     public animateHeader: boolean = true;
-    public configuration:NeuronalSpiderConfiguration;
 
     public constructor(configuration: NeuronalSpiderConfiguration) {
         this.configuration = configuration;
