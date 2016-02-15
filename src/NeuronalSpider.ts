@@ -23,19 +23,18 @@ class NeuronalSpider {
         this.addListeners();
     }
 
-    public createCanvas():void {
+    public createCanvas(): void {
+        var target: HTMLElement = this.configuration.targetElement;
         this.canvas = document.createElement("canvas");
-        this.configuration.targetElement.parentElement.insertBefore(this.canvas, this.configuration.targetElement);
-
-        var clientRect: ClientRect = this.configuration.targetElement.getBoundingClientRect();
+        this.configuration.targetElement.parentElement.insertBefore(this.canvas, target);
         
         this.canvas.style.position = "absolute";
-        this.canvas.style.top = clientRect.top.toString()+"px";
-        this.canvas.style.left = clientRect.left.toString()+"px";
-        this.canvas.width = clientRect.width;
-        this.canvas.style.width = clientRect.width.toString()+"px";
-        this.canvas.height = clientRect.height;
-        this.canvas.style.height = clientRect.height.toString()+"px";
+        this.canvas.style.top = target.clientTop.toString()+"px";
+        this.canvas.style.left = target.clientLeft.toString()+"px";
+        this.canvas.width = target.clientWidth;
+        this.canvas.style.width = target.clientWidth.toString()+"px";
+        this.canvas.height = target.clientHeight
+        this.canvas.style.height = target.clientHeight.toString()+"px";
     }
 
     public initializeHeader(): void {
