@@ -28,23 +28,22 @@ class NeuronalSpider {
         this.canvas = document.createElement("canvas");
         this.configuration.targetElement.parentElement.insertBefore(this.canvas, target);
         
+        this.canvas.width = target.clientWidth;
+        this.canvas.height = target.clientHeight;
         this.canvas.style.position = "absolute";
         this.canvas.style.top = target.clientTop.toString()+"px";
         this.canvas.style.left = target.clientLeft.toString()+"px";
-        this.canvas.width = target.clientWidth;
         this.canvas.style.width = target.clientWidth.toString()+"px";
-        this.canvas.height = target.clientHeight
         this.canvas.style.height = target.clientHeight.toString()+"px";
     }
 
     public initializeHeader(): void {
         this.points = new Array<Point>();
-        this.canvas.width = this.width = window.innerWidth;
-        this.canvas.height = this.height = window.innerHeight;
-        this.targetMouse = new Point(
-            window.innerWidth / 2,
-            window.innerHeight / 3
-        );
+        this.onResize(null);
+        this.targetMouse = {
+            x: window.innerWidth / 2,
+            y: window.innerHeight / 3
+        };
         this.context = this.canvas.getContext('2d');
     }
 
@@ -154,8 +153,8 @@ class NeuronalSpider {
     }
 
     private onResize(event:UIEvent): void {
-        this.width = this.canvas.width = window.innerWidth;
-        this.height = this.canvas.height = window.innerHeight;
+        this.width = this.canvas.width = this.configuration.targetElement.clientWidth;
+        this.height = this.canvas.height = this.configuration.targetElement.clientHeight;
     }
 
 
