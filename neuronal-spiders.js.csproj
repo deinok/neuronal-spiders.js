@@ -23,6 +23,7 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="dist\neuronal-spiders.js" />
     <Content Include="lib\gsap\src\minified\easing\EasePack.min.js" />
     <Content Include="lib\gsap\src\minified\jquery.gsap.min.js" />
     <Content Include="lib\gsap\src\minified\plugins\AttrPlugin.min.js" />
@@ -199,6 +200,7 @@
     <Content Include="web.config" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="dist\neuronal-spiders.d.ts" />
     <TypeScriptCompile Include="src\Circle.ts" />
     <TypeScriptCompile Include="src\Color.ts" />
     <TypeScriptCompile Include="Scripts\typings\greenshock.d.ts" />
@@ -232,6 +234,7 @@
     <Content Include="lib\jquery\src\.jshintrc" />
     <Content Include="lib\jquery\test\.jshintignore" />
     <Content Include="lib\jquery\test\.jshintrc" />
+    <Content Include="dist\neuronal-spiders.js.map" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
@@ -304,7 +307,7 @@
   </ProjectExtensions>
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
     <TypeScriptRemoveComments>false</TypeScriptRemoveComments>
-    <TypeScriptSourceMap>true</TypeScriptSourceMap>
+    <TypeScriptSourceMap>True</TypeScriptSourceMap>
     <TypeScriptTarget>ES5</TypeScriptTarget>
     <TypeScriptJSXEmit>None</TypeScriptJSXEmit>
     <TypeScriptCompileOnSaveEnabled>True</TypeScriptCompileOnSaveEnabled>
@@ -314,8 +317,9 @@
     <TypeScriptOutDir>dist/</TypeScriptOutDir>
     <TypeScriptGeneratesDeclarations>True</TypeScriptGeneratesDeclarations>
     <TypeScriptNoEmitOnError>True</TypeScriptNoEmitOnError>
-    <TypeScriptMapRoot />
-    <TypeScriptSourceRoot />
+    <TypeScriptMapRoot>
+    </TypeScriptMapRoot>
+    <TypeScriptSourceRoot>src/</TypeScriptSourceRoot>
     <Optimize>true</Optimize>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)' == 'Release'">
