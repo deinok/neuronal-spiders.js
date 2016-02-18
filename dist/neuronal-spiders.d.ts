@@ -106,6 +106,7 @@ declare class NeuronalSpider {
     animateHeader: boolean;
     constructor(configuration: NeuronalSpiderConfiguration);
     initialize(): void;
+    interchangeBackground(): void;
     createCanvas(): void;
     initializeHeader(): void;
     initializePoints(): void;

@@ -175,6 +175,20 @@ var NeuronalSpider = (function () {
         this.initAnimation();
         this.addListeners();
     };
+    NeuronalSpider.prototype.interchangeBackground = function () {
+        if (this.configuration.targetElement.style.background != "") {
+            this.canvas.style.background = this.configuration.targetElement.style.background;
+            this.configuration.targetElement.style.background = "";
+        }
+        if (this.configuration.targetElement.style.backgroundImage != "") {
+            this.canvas.style.backgroundImage = this.configuration.targetElement.style.backgroundImage;
+            this.configuration.targetElement.style.backgroundImage = "none";
+        }
+        if (this.configuration.targetElement.style.backgroundColor != "") {
+            this.canvas.style.backgroundColor = this.configuration.targetElement.style.backgroundColor;
+            this.configuration.targetElement.style.backgroundColor = "transparent";
+        }
+    };
     NeuronalSpider.prototype.createCanvas = function () {
         var clientRect = this.configuration.targetElement.getBoundingClientRect();
         this.canvas = document.createElement("canvas");
@@ -186,6 +200,7 @@ var NeuronalSpider = (function () {
         this.canvas.style.left = clientRect.left.toString() + "px";
         this.canvas.style.width = clientRect.width.toString() + "px";
         this.canvas.style.height = clientRect.height.toString() + "px";
+        this.interchangeBackground();
     };
     NeuronalSpider.prototype.initializeHeader = function () {
         this.points = new Array();

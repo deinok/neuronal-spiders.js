@@ -23,6 +23,21 @@ class NeuronalSpider {
         this.addListeners();
     }
 
+    public interchangeBackground() {
+        if (this.configuration.targetElement.style.background != "") {
+            this.canvas.style.background = this.configuration.targetElement.style.background;
+            this.configuration.targetElement.style.background = "";
+        }
+        if (this.configuration.targetElement.style.backgroundImage != "") {
+            this.canvas.style.backgroundImage = this.configuration.targetElement.style.backgroundImage;
+            this.configuration.targetElement.style.backgroundImage = "none";
+        }
+        if (this.configuration.targetElement.style.backgroundColor != "") {
+            this.canvas.style.backgroundColor = this.configuration.targetElement.style.backgroundColor;
+            this.configuration.targetElement.style.backgroundColor="transparent"
+        }
+    }
+
     public createCanvas(): void {
         var clientRect:ClientRect = this.configuration.targetElement.getBoundingClientRect();
         this.canvas = document.createElement("canvas");
@@ -34,7 +49,9 @@ class NeuronalSpider {
         this.canvas.style.top = clientRect.top.toString()+"px";
         this.canvas.style.left = clientRect.left.toString()+"px";
         this.canvas.style.width = clientRect.width.toString()+"px";
-        this.canvas.style.height = clientRect.height.toString()+"px";
+        this.canvas.style.height = clientRect.height.toString() + "px";
+
+        this.interchangeBackground();
     }
 
     public initializeHeader(): void {
