@@ -170,6 +170,8 @@ declare class Point implements GeometricPoint {
     circle: Circle;
     constructor(x: number, y: number);
     isActive(): boolean;
+    addCircle(configuration: NeuronalSpiderConfiguration): void;
     static getAbsolutDistance(point1: GeometricPoint, point2: GeometricPoint): number;
     static getDistance(point1: GeometricPoint, point2: GeometricPoint): number;
+    static findClosests(points: Point[], configuration: NeuronalSpiderConfiguration): Point[];
 }

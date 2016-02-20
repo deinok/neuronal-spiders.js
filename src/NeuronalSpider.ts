@@ -91,34 +91,7 @@ class NeuronalSpider {
      * Find the closestPoints
      */
     private findClosests(): void{
-        for (var i in this.points) {
-            var closest = [];
-            var p1 = this.points[i];
-            for (var j = 0; j < this.points.length; j++) {
-                var p2 = this.points[j]
-                if (!(p1 == p2)) {
-                    var placed = false;
-                    for (var k = 0; k < this.configuration.numberLines; k++) {
-                        if (!placed) {
-                            if (closest[k] == undefined) {
-                                closest[k] = p2;
-                                placed = true;
-                            }
-                        }
-                    }
-
-                    for (var k = 0; k < this.configuration.numberLines; k++) {
-                        if (!placed) {
-                            if (Point.getDistance(p1, p2) < Point.getDistance(p1, closest[k])) {
-                                closest[k] = p2;
-                                placed = true;
-                            }
-                        }
-                    }
-                }
-            }
-            p1.closest = closest;
-        }
+        this.points = Point.findClosests(this.points,this.configuration);
     }
 
     /**
@@ -126,17 +99,7 @@ class NeuronalSpider {
      */
     private addCircles():void {
         for (var i in this.points) {
-            var circle = new Circle(
-                this.points[i],
-                this.configuration.circleRadius + Math.random() * 2,
-                new Color(
-                    this.configuration.circleColor.red,
-                    this.configuration.circleColor.green,
-                    this.configuration.circleColor.blue,
-                    1
-                )
-            );
-            this.points[i].circle = circle;
+            this.points[i].addCircle(this.configuration);
         }
     }
 
@@ -230,21 +193,18 @@ class NeuronalSpider {
                 this.points[i].circle.color.alpha = opacity;
                 this.points[i].activeOpacity = opacity/2;
 
-                if (this.points[i].isActive()) {
-                    Line.drawLines(
-                        this.points[i],
-                        new Color(
-                            this.configuration.linesColor.red,
-                            this.configuration.linesColor.green,
-                            this.configuration.linesColor.blue,
-                            this.points[i].activeOpacity
-                        ),
-                        this.context
-                    );
-                }
-                if (this.points[i].circle.isActive()) {
-                    this.points[i].circle.draw(this.context);
-                }
+                Line.drawLines(
+                    this.points[i],
+                    new Color(
+                        this.configuration.linesColor.red,
+                        this.configuration.linesColor.green,
+                        this.configuration.linesColor.blue,
+                        this.points[i].activeOpacity
+                    ),
+                    this.context
+                );
+
+                this.points[i].circle.draw(this.context);
             }
 
         }
@@ -263,16 +223,5 @@ class NeuronalSpider {
             }
         );
     }
-
-    
-
-
-
-
-
-
-
-
-
 
 }
