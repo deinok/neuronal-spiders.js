@@ -24,16 +24,17 @@ class NeuronalSpider {
     }
 
     public interchangeBackground() {
-        if (this.configuration.targetElement.style.background != "") {
-            this.canvas.style.background = this.configuration.targetElement.style.background;
+        var style:CSSStyleDeclaration= window.getComputedStyle(this.configuration.targetElement);
+        if (style.background != "") {
+            this.canvas.style.background = style.background;
             this.configuration.targetElement.style.background = "";
         }
-        if (this.configuration.targetElement.style.backgroundImage != "") {
-            this.canvas.style.backgroundImage = this.configuration.targetElement.style.backgroundImage;
+        if (style.backgroundImage != "") {
+            this.canvas.style.backgroundImage = style.backgroundImage;
             this.configuration.targetElement.style.backgroundImage = "none";
         }
-        if (this.configuration.targetElement.style.backgroundColor != "") {
-            this.canvas.style.backgroundColor = this.configuration.targetElement.style.backgroundColor;
+        if (style.backgroundColor != "") {
+            this.canvas.style.backgroundColor = style.backgroundColor;
             this.configuration.targetElement.style.backgroundColor="transparent"
         }
     }

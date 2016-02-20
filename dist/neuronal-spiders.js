@@ -150,18 +150,22 @@ var Line = (function () {
 /*Requereix TweenMax (script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.2/TweenMax.min.js"></script>)*/
 /*Requereix JQUERY 1.9*/
 "use strict";
-$(function () {
-    window.onload = function () {
-        var neuronalElements = NeuronalSpiderConfiguration.searchNeuronalSpiderElements();
-        var neuronalSpiders = new Array(neuronalElements.length);
-        for (var i in neuronalElements) {
-            var configuration = NeuronalSpiderConfiguration.readConfiguration(neuronalElements[i]);
-            var spider = new NeuronalSpider(configuration);
-            neuronalSpiders[i] = spider;
-            neuronalSpiders[i].initialize();
-        }
-    };
-});
+$(document).ready(execute);
+//$(function () {
+//    window.onload = function () {
+//        execute();
+//    }
+//});
+function execute() {
+    var neuronalElements = NeuronalSpiderConfiguration.searchNeuronalSpiderElements();
+    var neuronalSpiders = new Array(neuronalElements.length);
+    for (var i in neuronalElements) {
+        var configuration = NeuronalSpiderConfiguration.readConfiguration(neuronalElements[i]);
+        var spider = new NeuronalSpider(configuration);
+        neuronalSpiders[i] = spider;
+        neuronalSpiders[i].initialize();
+    }
+}
 "use strict";
 var NeuronalSpider = (function () {
     function NeuronalSpider(configuration) {
@@ -176,16 +180,17 @@ var NeuronalSpider = (function () {
         this.addListeners();
     };
     NeuronalSpider.prototype.interchangeBackground = function () {
-        if (this.configuration.targetElement.style.background != "") {
-            this.canvas.style.background = this.configuration.targetElement.style.background;
+        var style = window.getComputedStyle(this.configuration.targetElement);
+        if (style.background != "") {
+            this.canvas.style.background = style.background;
             this.configuration.targetElement.style.background = "";
         }
-        if (this.configuration.targetElement.style.backgroundImage != "") {
-            this.canvas.style.backgroundImage = this.configuration.targetElement.style.backgroundImage;
+        if (style.backgroundImage != "") {
+            this.canvas.style.backgroundImage = style.backgroundImage;
             this.configuration.targetElement.style.backgroundImage = "none";
         }
-        if (this.configuration.targetElement.style.backgroundColor != "") {
-            this.canvas.style.backgroundColor = this.configuration.targetElement.style.backgroundColor;
+        if (style.backgroundColor != "") {
+            this.canvas.style.backgroundColor = style.backgroundColor;
             this.configuration.targetElement.style.backgroundColor = "transparent";
         }
     };

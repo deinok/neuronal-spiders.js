@@ -95,6 +95,7 @@ declare class Line {
      */
     static drawLines(point: Point, color: Color, context: CanvasRenderingContext2D): void;
 }
+declare function execute(): void;
 declare class NeuronalSpider {
     configuration: NeuronalSpiderConfiguration;
     width: number;
