@@ -183,7 +183,7 @@ var NeuronalSpider = (function () {
         var style = window.getComputedStyle(this.configuration.targetElement);
         if (style.background != "") {
             this.canvas.style.background = style.background;
-            this.configuration.targetElement.style.background = "";
+            this.configuration.targetElement.style.background = "transparent";
         }
         if (style.backgroundImage != "") {
             this.canvas.style.backgroundImage = style.backgroundImage;
@@ -193,6 +193,7 @@ var NeuronalSpider = (function () {
             this.canvas.style.backgroundColor = style.backgroundColor;
             this.configuration.targetElement.style.backgroundColor = "transparent";
         }
+        this.canvas.style.zIndex = "-1";
     };
     NeuronalSpider.prototype.createCanvas = function () {
         var clientRect = this.configuration.targetElement.getBoundingClientRect();

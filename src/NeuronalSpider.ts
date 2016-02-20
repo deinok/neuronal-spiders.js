@@ -27,7 +27,7 @@ class NeuronalSpider {
         var style:CSSStyleDeclaration= window.getComputedStyle(this.configuration.targetElement);
         if (style.background != "") {
             this.canvas.style.background = style.background;
-            this.configuration.targetElement.style.background = "";
+            this.configuration.targetElement.style.background = "transparent";
         }
         if (style.backgroundImage != "") {
             this.canvas.style.backgroundImage = style.backgroundImage;
@@ -37,6 +37,7 @@ class NeuronalSpider {
             this.canvas.style.backgroundColor = style.backgroundColor;
             this.configuration.targetElement.style.backgroundColor="transparent"
         }
+        this.canvas.style.zIndex="-1"
     }
 
     public createCanvas(): void {
