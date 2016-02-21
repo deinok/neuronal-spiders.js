@@ -21,51 +21,51 @@ class NeuronalSpiderConfiguration {
     }
 
     /**
-     * Return a NeuronaSpiderConfiguration oa the given NeuronalSpiderConfiguration
+     * Return a NeuronaSpiderConfiguration of the given NeuronalSpiderConfiguration
      * @param htmlElement
      */
     public static readConfiguration(htmlElement: HTMLElement): NeuronalSpiderConfiguration {
-        if (htmlElement.dataset['neuronal']=="enabled") {
-            var result = new NeuronalSpiderConfiguration(htmlElement,true);
+        if (htmlElement.dataset['neuronal']=="true") {
+            var result:NeuronalSpiderConfiguration = new NeuronalSpiderConfiguration(htmlElement,true);
 
-            var numberPoints = htmlElement.dataset['numberPoints'];
+            var numberPoints:string = htmlElement.dataset['numberPoints'];
             if (numberPoints != null) {
-                result.numberPoints = parseInt( numberPoints);
+                result.numberPoints = parseInt(numberPoints);
             }
 
-            var numberLines = htmlElement.dataset['numberLines'];
+            var numberLines:string = htmlElement.dataset['numberLines'];
             if (numberLines != null) {
                 result.numberLines = parseInt(numberLines);
             }
 
-            var visualRadius = htmlElement.dataset['visualRadius'];
+            var visualRadius:string = htmlElement.dataset['visualRadius'];
             if (visualRadius != null) {
                 result.visualRadius = parseInt(visualRadius);
             }
             
-            var maximumOpacity = htmlElement.dataset['maximumOpacity'];
+            var maximumOpacity:string = htmlElement.dataset['maximumOpacity'];
             if (maximumOpacity != null){
                 result.maximumOpacity = parseInt(maximumOpacity);
             }
 
-            var circleRadius = htmlElement.dataset['circleRadius'];
+            var circleRadius:string = htmlElement.dataset['circleRadius'];
             if (circleRadius != null) {
                 result.circleRadius = parseInt(circleRadius);
             }
 
-            var color = htmlElement.dataset['color'];
+            var color:string = htmlElement.dataset['color'];
             if (color != null) {
-                var generalColor = Color.FromHex(color);
+                var generalColor:Color = Color.FromHex(color);
                 result.circleColor = generalColor;
                 result.linesColor = generalColor;
             }
 
-            var circleColor = htmlElement.dataset['circleColor'];
+            var circleColor:string = htmlElement.dataset['circleColor'];
             if (circleColor != null) {
                 result.circleColor = Color.FromHex(circleColor);
             }
 
-            var linesColor = htmlElement.dataset['linesColor'];
+            var linesColor:string = htmlElement.dataset['linesColor'];
             if (linesColor != null) {
                 result.linesColor = Color.FromHex(linesColor);
             }
@@ -80,7 +80,7 @@ class NeuronalSpiderConfiguration {
      */
     public static searchNeuronalSpiderElements(): HTMLElement[] {
         try {
-            var nodeList = <NodeListOf<HTMLElement>>document.querySelectorAll('[data-neuronal="enabled"]');
+            var nodeList = <NodeListOf<HTMLElement>>document.querySelectorAll('[data-neuronal]');
             return Array.prototype.slice.call(nodeList);
         } catch (Exception){
             return null;

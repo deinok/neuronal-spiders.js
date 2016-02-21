@@ -2,13 +2,11 @@
 /*Requereix JQUERY 1.9*/
 
 "use strict"
-$(document).ready(execute);
-
-//$(function () {
-//    window.onload = function () {
-//        execute();
-//    }
-//});
+$(function () {
+    window.onload = function () {
+        execute();
+    }
+});
 
 function execute():void {
     var neuronalElements:HTMLElement[] = NeuronalSpiderConfiguration.searchNeuronalSpiderElements();

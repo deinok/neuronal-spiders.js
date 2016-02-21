@@ -29,14 +29,6 @@ class NeuronalSpider {
             this.canvas.style.background = style.background;
             this.configuration.targetElement.style.background = "transparent";
         }
-        if (style.backgroundImage != "") {
-            this.canvas.style.backgroundImage = style.backgroundImage;
-            this.configuration.targetElement.style.backgroundImage = "none";
-        }
-        if (style.backgroundColor != "") {
-            this.canvas.style.backgroundColor = style.backgroundColor;
-            this.configuration.targetElement.style.backgroundColor="transparent"
-        }
         this.canvas.style.zIndex="-1"
     }
 

@@ -150,12 +150,11 @@ var Line = (function () {
 /*Requereix TweenMax (script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.2/TweenMax.min.js"></script>)*/
 /*Requereix JQUERY 1.9*/
 "use strict";
-$(document).ready(execute);
-//$(function () {
-//    window.onload = function () {
-//        execute();
-//    }
-//});
+$(function () {
+    window.onload = function () {
+        execute();
+    };
+});
 function execute() {
     var neuronalElements = NeuronalSpiderConfiguration.searchNeuronalSpiderElements();
     var neuronalSpiders = new Array(neuronalElements.length);
@@ -184,14 +183,6 @@ var NeuronalSpider = (function () {
         if (style.background != "") {
             this.canvas.style.background = style.background;
             this.configuration.targetElement.style.background = "transparent";
-        }
-        if (style.backgroundImage != "") {
-            this.canvas.style.backgroundImage = style.backgroundImage;
-            this.configuration.targetElement.style.backgroundImage = "none";
-        }
-        if (style.backgroundColor != "") {
-            this.canvas.style.backgroundColor = style.backgroundColor;
-            this.configuration.targetElement.style.backgroundColor = "transparent";
         }
         this.canvas.style.zIndex = "-1";
     };
@@ -361,11 +352,11 @@ var NeuronalSpiderConfiguration = (function () {
         this.enabled = enabled;
     }
     /**
-     * Return a NeuronaSpiderConfiguration oa the given NeuronalSpiderConfiguration
+     * Return a NeuronaSpiderConfiguration of the given NeuronalSpiderConfiguration
      * @param htmlElement
      */
     NeuronalSpiderConfiguration.readConfiguration = function (htmlElement) {
-        if (htmlElement.dataset['neuronal'] == "enabled") {
+        if (htmlElement.dataset['neuronal'] == "true") {
             var result = new NeuronalSpiderConfiguration(htmlElement, true);
             var numberPoints = htmlElement.dataset['numberPoints'];
             if (numberPoints != null) {
@@ -410,7 +401,7 @@ var NeuronalSpiderConfiguration = (function () {
      */
     NeuronalSpiderConfiguration.searchNeuronalSpiderElements = function () {
         try {
-            var nodeList = document.querySelectorAll('[data-neuronal="enabled"]');
+            var nodeList = document.querySelectorAll('[data-neuronal]');
             return Array.prototype.slice.call(nodeList);
         }
         catch (Exception) {

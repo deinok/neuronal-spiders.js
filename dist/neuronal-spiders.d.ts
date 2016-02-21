@@ -149,7 +149,7 @@ declare class NeuronalSpiderConfiguration {
     linesColor: Color;
     constructor(htmlElement: HTMLElement, enabled: boolean);
     /**
-     * Return a NeuronaSpiderConfiguration oa the given NeuronalSpiderConfiguration
+     * Return a NeuronaSpiderConfiguration of the given NeuronalSpiderConfiguration
      * @param htmlElement
      */
     static readConfiguration(htmlElement: HTMLElement): NeuronalSpiderConfiguration;
