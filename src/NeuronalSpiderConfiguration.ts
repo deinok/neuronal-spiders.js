@@ -60,7 +60,7 @@ class NeuronalSpiderConfiguration {
                 result.linesColor = generalColor;
             }
 
-            var circleColor = htmlElement.dataset['circleColor'];
+            var circleColor = htmlElement.dataset['circlesColor'];
             if (circleColor != null) {
                 result.circleColor = Color.FromHex(circleColor);
             }
