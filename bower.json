@@ -10,7 +10,6 @@
 	"main": "./dist/neuronal-spiders.js",
 	"private": true,
 	"dependencies": {
-		"jquery": "1.9.0",
 		"gsap": "1.18.2"
 	},
 	"ignore": [ "./Tests" ]

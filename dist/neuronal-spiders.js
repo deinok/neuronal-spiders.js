@@ -150,11 +150,9 @@ var Line = (function () {
 /*Requereix TweenMax (script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.2/TweenMax.min.js"></script>)*/
 /*Requereix JQUERY 1.9*/
 "use strict";
-$(function () {
-    window.onload = function () {
-        execute();
-    };
-});
+window.onload = function () {
+    execute();
+};
 function execute() {
     var neuronalElements = NeuronalSpiderConfiguration.searchNeuronalSpiderElements();
     var neuronalSpiders = new Array(neuronalElements.length);
@@ -384,7 +382,7 @@ var NeuronalSpiderConfiguration = (function () {
                 result.circleColor = generalColor;
                 result.linesColor = generalColor;
             }
-            var circleColor = htmlElement.dataset['circleColor'];
+            var circleColor = htmlElement.dataset['circlesColor'];
             if (circleColor != null) {
                 result.circleColor = Color.FromHex(circleColor);
             }
