@@ -71,6 +71,7 @@ a {
 }
 
 .page-header {
+	min-height:25rem;
 	color: #fff;
 	text-align: center;
 	background-color: #159957;
