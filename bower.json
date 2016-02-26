@@ -1,0 +1,8 @@
+{
+	"name": "Neuronal Spiders Web",
+	"private": true,
+	"dependencies": {
+		"gsap": "1.18.2",
+		"less": "2.6.0"
+	}
+}
