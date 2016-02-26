@@ -64,11 +64,15 @@
     <Content Include="lib\gsap\src\uncompressed\TweenLite.js" />
     <Content Include="lib\gsap\src\uncompressed\TweenMax.js" />
     <Content Include="lib\gsap\src\uncompressed\utils\Draggable.js" />
-    <Content Include="Tests\Test1\test1.css" />
+    <Content Include="lib\less.js\browser.js" />
+    <Content Include="lib\less.js\dist\less.js" />
+    <Content Include="lib\less.js\dist\less.min.js" />
+    <Content Include="lib\less.js\index.js" />
+    <None Include="Tests\Test1\test1.less" />
     <Content Include="Tests\Test1\test1.html" />
     <Content Include=".bowerrc" />
     <Content Include="bower.json" />
-    <Content Include="Tests\Test2\test2.css" />
+    <None Include="Tests\Test2\test2.less" />
     <Content Include="Tests\Test2\test2.html" />
     <Content Include="web.config" />
   </ItemGroup>
@@ -90,6 +94,8 @@
     <Content Include="lib\gsap\bower.json" />
     <Content Include="lib\gsap\package.json" />
     <Content Include="lib\gsap\README.md" />
+    <Content Include="lib\less.js\.bower.json" />
+    <Content Include="lib\less.js\bower.json" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>

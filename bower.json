@@ -10,7 +10,8 @@
 	"main": "./dist/neuronal-spiders.js",
 	"private": true,
 	"dependencies": {
-		"gsap": "1.18.2"
+		"gsap": "1.18.2",
+		"less.js": "2.6.0"
 	},
-	"ignore": [ "./Tests" ]
+	"ignore": [ "./Tests","web.config" ]
 }
