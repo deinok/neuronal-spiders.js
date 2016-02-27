@@ -1,4 +1,12 @@
+@titles-color:#159957;
+@text-color:#606c71;
+@code-color:#383e41;
+@code-background-color:#f3f6fa;
+@link-color:#1e6bb8;
+
 * {
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
 }
 
@@ -8,11 +16,11 @@ body {
 	font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-size: 16px;
 	line-height: 1.5;
-	color: #606c71;
+	color: @text-color;
 }
 
 a {
-	color: #1e6bb8;
+	color: @link-color;
 	text-decoration: none;
 
 	:hover {
@@ -26,7 +34,7 @@ a {
 		margin-top: 2rem;
 		margin-bottom: 1rem;
 		font-weight: normal;
-		color: #159957;
+		color: @titles-color;
 	}
 
 	:first-child {
@@ -45,8 +53,8 @@ a {
 		padding: 2px 4px;
 		font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
 		font-size: 0.9rem;
-		color: #383e41;
-		background-color: #f3f6fa;
+		color: @code-color;
+		background-color: @code-background-color;
 		border-radius: 0.3rem;
 	}
 
@@ -56,20 +64,22 @@ a {
 		margin-bottom: 1rem;
 		font: 1rem Consolas, "Liberation Mono", Menlo, Courier, monospace;
 		color: #567482;
+		-ms-word-wrap: normal;
 		word-wrap: normal;
-		background-color: #f3f6fa;
+		background-color: @code-background-color;
 		border: solid 1px #dce6f0;
 		border-radius: 0.3rem;
 		overflow: auto;
 		line-height: 1.45;
 
-		code, tt {
+		code {
 			display: inline;
 			max-width: initial;
 			padding: 0;
 			margin: 0;
 			overflow: initial;
 			line-height: inherit;
+			-ms-word-wrap: normal;
 			word-wrap: normal;
 			background-color: transparent;
 			border: 0;
@@ -84,6 +94,7 @@ a {
 			margin: 0;
 			font-size: 0.9rem;
 			color: #567482;
+			-ms-word-break: normal;
 			word-break: normal;
 			white-space: pre;
 			background: transparent;
@@ -96,6 +107,7 @@ a {
 
 		pre {
 			margin-bottom: 0;
+			-ms-word-break: normal;
 			word-break: normal;
 			padding: 0.8rem;
 			overflow: auto;
@@ -128,7 +140,7 @@ a {
 		display: block;
 		width: 100%;
 		overflow: auto;
-		word-break: normal;
+		-ms-word-break: keep-all;
 		word-break: keep-all;
 
 		th {
@@ -164,6 +176,23 @@ a {
 		background-color: #eff0f1;
 		border: 0;
 	}
+
+	@media screen and (min-width: 64em) {
+		max-width: 64rem;
+		padding: 2rem 6rem;
+		margin: 0 auto;
+		font-size: 1.1rem;
+	}
+
+	@media screen and (min-width: 42em) and (max-width: 64em) {
+		padding: 2rem 4rem;
+		font-size: 1.1rem;
+	}
+
+	@media screen and (max-width: 42em) {
+		padding: 2rem 1rem;
+		font-size: 1rem;
+	}
 }
 
 .btn {
@@ -171,10 +200,11 @@ a {
 	margin-bottom: 1rem;
 	color: rgba(255, 255, 255, 0.7);
 	background-color: rgba(255, 255, 255, 0.08);
-	border-color: rgba(255, 255, 255, 0.2);
-	border-style: solid;
-	border-width: 1px;
+	border: 1px,solid,rgba(255, 255, 255, 0.2);
 	border-radius: 0.3rem;
+	-moz-transition: color 0.2s, background-color 0.2s, border-color 0.2s;
+	-o-transition: color 0.2s, background-color 0.2s, border-color 0.2s;
+	-webkit-transition: color 0.2s, background-color 0.2s, border-color 0.2s;
 	transition: color 0.2s, background-color 0.2s, border-color 0.2s;
 
 	:hover {
@@ -187,25 +217,84 @@ a {
 	+ .btn {
 		margin-left: 1rem;
 	}
+
+	@media screen and (min-width: 64em) {
+		padding: 0.75rem 1rem;
+	}
+
+	@media screen and (min-width: 42em) and (max-width: 64em) {
+		.btn {
+			padding: 0.6rem 0.9rem;
+			font-size: 0.9rem;
+		}
+	}
+
+	@media screen and (max-width: 42em) {
+		display: block;
+		width: 100%;
+		padding: 0.75rem;
+		font-size: 0.9rem;
+
+		+ .btn {
+			margin-top: 1rem;
+			margin-left: 0;
+		}
+	}
 }
 
 .page-header {
 	min-height: 25rem;
 	color: #fff;
 	text-align: center;
-	background-color: #159957;
+	background-color: @titles-color;
 	background-image: linear-gradient(120deg, #155799, #159957);
+
+	@media screen and (min-width: 64em) {
+		padding: 5rem 6rem;
+	}
+
+	@media screen and (min-width: 42em) and (max-width: 64em) {
+		padding: 3rem 4rem;
+	}
+
+	@media screen and (max-width: 42em) {
+		padding: 2rem 1rem;
+	}
 }
 
 .project-name {
 	margin-top: 0;
 	margin-bottom: 0.1rem;
+
+	@media screen and (min-width: 64em) {
+		font-size: 3.25rem;
+	}
+
+	@media screen and (min-width: 42em) and (max-width: 64em) {
+		font-size: 2.25rem;
+	}
+
+	@media screen and (max-width: 42em) {
+		font-size: 1.75rem;
+	}
 }
 
 .project-tagline {
 	margin-bottom: 2rem;
 	font-weight: normal;
 	opacity: 0.7;
+
+	@media screen and (min-width: 64em) {
+		font-size: 1.25rem;
+	}
+
+	@media screen and (min-width: 42em) and (max-width: 64em) {
+		font-size: 1.15rem;
+	}
+
+	@media screen and (max-width: 42em) {
+		font-size: 1rem;
+	}
 }
 
 .site-footer {
@@ -214,105 +303,25 @@ a {
 	padding-bottom: 2rem;
 	margin-top: 2rem;
 	border-top: solid 1px #eff0f1;
-}
 
-.site-footer-owner {
-	display: block;
-	font-weight: bold;
-}
-
-.site-footer-credits {
-	color: #819198;
-}
-
-@media screen and (min-width: 64em) {
-	.page-header {
-		padding: 5rem 6rem;
-	}
-
-	.project-name {
-		font-size: 3.25rem;
-	}
-
-	.project-tagline {
-		font-size: 1.25rem;
-	}
-
-	.btn {
-		padding: 0.75rem 1rem;
-	}
-
-	.main-content {
-		max-width: 64rem;
-		padding: 2rem 6rem;
-		margin: 0 auto;
-		font-size: 1.1rem;
-	}
-
-	.site-footer {
-		font-size: 1rem;
-	}
-}
-
-@media screen and (min-width: 42em) and (max-width: 64em) {
-	.page-header {
-		padding: 3rem 4rem;
-	}
-
-	.project-name {
-		font-size: 2.25rem;
-	}
-
-	.project-tagline {
-		font-size: 1.15rem;
-	}
-
-	.btn {
-		padding: 0.6rem 0.9rem;
-		font-size: 0.9rem;
-	}
-
-	.main-content {
-		padding: 2rem 4rem;
-		font-size: 1.1rem;
-	}
-
-	.site-footer {
-		font-size: 1rem;
-	}
-}
-
-@media screen and (max-width: 42em) {
-	.page-header {
-		padding: 2rem 1rem;
-	}
-
-	.project-name {
-		font-size: 1.75rem;
-	}
-
-	.project-tagline {
-		font-size: 1rem;
-	}
-
-	.btn {
+	.owner {
 		display: block;
-		width: 100%;
-		padding: 0.75rem;
-		font-size: 0.9rem;
+		font-weight: bold;
 	}
 
-	.btn + .btn {
-		margin-top: 1rem;
-		margin-left: 0;
+	.credits {
+		color: #819198;
 	}
 
-	.main-content {
-		padding: 2rem 1rem;
+	@media screen and (min-width: 64em) {
 		font-size: 1rem;
 	}
 
-	.site-footer {
+	@media screen and (min-width: 42em) and (max-width: 64em) {
+		font-size: 1rem;
+	}
+
+	@media screen and (max-width: 42em) {
 		font-size: 0.9rem;
 	}
 }
