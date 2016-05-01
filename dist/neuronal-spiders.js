@@ -40,7 +40,7 @@ var Circle = (function () {
         return this.getOpacity() != 0;
     };
     return Circle;
-})();
+}());
 "use strict";
 /**
  * Represents a color as RGBA
@@ -100,7 +100,7 @@ var Color = (function () {
         return hexComponent.length == 1 ? "0" + hexComponent : hexComponent;
     };
     return Color;
-})();
+}());
 "use strict";
 "use strict";
 /**
@@ -146,7 +146,7 @@ var Line = (function () {
         }
     };
     return Line;
-})();
+}());
 /*Requereix TweenMax (script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.2/TweenMax.min.js"></script>)*/
 "use strict";
 window.onload = function () {
@@ -330,7 +330,7 @@ var NeuronalSpider = (function () {
         });
     };
     return NeuronalSpider;
-})();
+}());
 "use strict";
 /**
  * Represents the Configuration of a Neuronal Spider
@@ -406,7 +406,7 @@ var NeuronalSpiderConfiguration = (function () {
         }
     };
     return NeuronalSpiderConfiguration;
-})();
+}());
 "use strict";
 /**
  * Represents a Point in Canvas
@@ -459,5 +459,5 @@ var Point = (function () {
         return points;
     };
     return Point;
-})();
+}());
 //# sourceMappingURL=neuronal-spiders.js.map
