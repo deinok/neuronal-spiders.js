@@ -247,8 +247,8 @@ var NeuronalSpider = (function () {
         window.onscroll = this.onScrollCheck.bind(this);
     };
     NeuronalSpider.prototype.onMouseMove = function (event) {
-        this.targetMouse.x = event.layerX;
-        this.targetMouse.y = event.layerY;
+        this.targetMouse.x = event.offsetX;
+        this.targetMouse.y = event.offsetY;
     };
     NeuronalSpider.prototype.onScrollCheck = function (event) {
         if (document.body.scrollTop > this.height) {
