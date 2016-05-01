@@ -78,5 +78,4 @@ class Point implements GeometricPoint {
         return points;
     }
 
-
 }

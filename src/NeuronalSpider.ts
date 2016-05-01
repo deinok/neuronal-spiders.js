@@ -102,20 +102,15 @@ class NeuronalSpider {
      */
     public addListeners(): void {
         if (!('ontouchstart' in window)) {
-            window.onmousemove = this.onMouseMove.bind(this);
+            this.configuration.targetElement.onmousemove = this.onMouseMove.bind(this);
         }
         window.onresize = this.onResize.bind(this);
         window.onscroll = this.onScrollCheck.bind(this);
     }
 
     private onMouseMove(event: MouseEvent): void {
-        if (event.pageX || event.pageY) {
-            this.targetMouse.x = event.pageX;
-            this.targetMouse.y = event.pageY;
-        } else if (event.clientX || event.clientY) {
-            this.targetMouse.x = event.clientX + document.body.scrollLeft + document.documentElement.scrollLeft;
-            this.targetMouse.y = event.clientY + document.body.scrollTop + document.documentElement.scrollTop;
-        }
+		this.targetMouse.x = event.layerX;
+		this.targetMouse.y = event.layerY;
     }
 
     private onScrollCheck(event: UIEvent): void {
@@ -145,10 +140,9 @@ class NeuronalSpider {
             this.context.clearRect(0, 0, this.width, this.height);
 
             for (var i in this.points) {
-                var maxOpacity = this.configuration.maximumOpacity;
-                var distance = Point.getAbsolutDistance(this.targetMouse, this.points[i]);
-
-                var opacity = 0;
+                var maxOpacity:number = this.configuration.maximumOpacity;
+                var distance:number = Point.getAbsolutDistance(this.targetMouse, this.points[i]);
+                var opacity:number = 0;
                 
                 if (distance < this.configuration.visualRadius / 10) {
                     opacity = (maxOpacity / 10) * 10;

@@ -241,20 +241,14 @@ var NeuronalSpider = (function () {
      */
     NeuronalSpider.prototype.addListeners = function () {
         if (!('ontouchstart' in window)) {
-            window.onmousemove = this.onMouseMove.bind(this);
+            this.configuration.targetElement.onmousemove = this.onMouseMove.bind(this);
         }
         window.onresize = this.onResize.bind(this);
         window.onscroll = this.onScrollCheck.bind(this);
     };
     NeuronalSpider.prototype.onMouseMove = function (event) {
-        if (event.pageX || event.pageY) {
-            this.targetMouse.x = event.pageX;
-            this.targetMouse.y = event.pageY;
-        }
-        else if (event.clientX || event.clientY) {
-            this.targetMouse.x = event.clientX + document.body.scrollLeft + document.documentElement.scrollLeft;
-            this.targetMouse.y = event.clientY + document.body.scrollTop + document.documentElement.scrollTop;
-        }
+        this.targetMouse.x = event.layerX;
+        this.targetMouse.y = event.layerY;
     };
     NeuronalSpider.prototype.onScrollCheck = function (event) {
         if (document.body.scrollTop > this.height) {

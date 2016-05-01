@@ -80,7 +80,7 @@ class NeuronalSpiderConfiguration {
      */
     public static searchNeuronalSpiderElements(): HTMLElement[] {
         try {
-            var nodeList = <NodeListOf<HTMLElement>>document.querySelectorAll('[data-neuronal]');
+            var nodeList:NodeListOf<HTMLElement> = <NodeListOf<HTMLElement>>document.querySelectorAll('[data-neuronal]');
             return Array.prototype.slice.call(nodeList);
         } catch (Exception){
             return null;
