@@ -1,19 +1,30 @@
 {
 	"name": "nuronal-spiders.js",
 	"description": "Displays a connections beetween multiple points, very cute visual effect",
-	"version": "1.0.0",
+	"version": "0.5.0",
+	"private": true,
 	"homepage": "https://github.com/deinok/neuronal-spiders.js",
+	"authors": [
+		"raul.hidalgo.sopa@gmail.com"
+	],
+	"license": "MIT",
+	"keywords": [
+		"neuronal",
+		"spider",
+		"javascript",
+		"typescript",
+		"canvas"
+	],
+	"main": "./dist/neuronal-spiders.js",
 	"repository": {
 		"url": "https://github.com/deinok/neuronal-spiders.js",
 		"type": "git"
 	},
-	"authors": [ "raul.hidalgo.sopa@gmail.com" ],
-	"license": "MIT",
-	"keywords": [ "neuronal", "spider", "javascript", "typescript", "canvas" ],
-	"main": "./dist/neuronal-spiders.js",
-	"private": true,
 	"dependencies": {
 		"gsap": "1.18.2"
 	},
-	"ignore": [ "./Tests", "web.config" ]
+	"ignore": [
+		"./Tests",
+		"/typings"
+	]
 }

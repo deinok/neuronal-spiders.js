@@ -1,9 +1,9 @@
 ﻿/*Requereix TweenMax (script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.2/TweenMax.min.js"></script>)*/
 
-"use strict"
+"use strict";
 window.onload = function () {
     execute();
-}
+};
 
 function execute():void {
     var neuronalElements:HTMLElement[] = NeuronalSpiderConfiguration.searchNeuronalSpiderElements();

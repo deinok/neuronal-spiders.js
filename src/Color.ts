@@ -1,4 +1,4 @@
-﻿"use strict"
+﻿"use strict";
 
 /**
  * Represents a color as RGBA

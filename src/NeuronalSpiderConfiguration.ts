@@ -1,4 +1,4 @@
-﻿"use strict"
+﻿"use strict";
 
 /**
  * Represents the Configuration of a Neuronal Spider

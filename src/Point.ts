@@ -1,4 +1,4 @@
-﻿"use strict"
+﻿"use strict";
 
 /**
  * Represents a Point in Canvas
@@ -51,7 +51,7 @@ class Point implements GeometricPoint {
             var point: Point = points[i];
 
             for (var j in points) {
-                var point2: Point = points[j]
+                var point2: Point = points[j];
                 if (point != point2) {
                     var placed: boolean = false;
                     for (var k = 0; k < configuration.numberLines; k++) {

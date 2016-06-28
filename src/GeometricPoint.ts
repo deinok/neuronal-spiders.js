@@ -1,7 +1,7 @@
-﻿"use strict"
+﻿"use strict";
 
 /**
- * Reprsents a Geometric Point
+ * Represents a Geometric Point
  */
 interface GeometricPoint {
     x: number;
