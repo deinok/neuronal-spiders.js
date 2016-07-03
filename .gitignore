@@ -1,3 +1,10 @@
+#Node.js
+/node_modules
+/bower_components
+npm-debug.log
+
+#TypeScript
+/typings
+
 .idea/
 lib/
-node_modules/
