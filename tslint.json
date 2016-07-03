@@ -1,3 +1,23 @@
 {
-
+  "rules": {
+    "align": [
+      true,
+      "arguments",
+      "parameters",
+      "statements"
+    ],
+    "class-name": true,
+    "eofline": true,
+    "indent": [
+      true,
+      "tabs"
+    ],
+    "quotemark": [
+      true,
+      "double"
+    ],
+    "no-any": true,
+    "no-eval": true,
+    "semicolon": true
+  }
 }
