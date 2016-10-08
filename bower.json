@@ -21,6 +21,6 @@
     "type": "git"
   },
   "dependencies": {
-    "gsap": "1.15.0"
+    "gsap": "^1.19.0"
   }
 }

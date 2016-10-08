@@ -1,9 +1,9 @@
-#Node.js
+# Node.js
 node_modules/
 bower_components/
 npm-debug.log
 
-#TypeScript
+# TypeScript
 typings/
 
-.idea/
+# JetBrains
