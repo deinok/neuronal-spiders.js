@@ -1,13 +1,14 @@
 var NeuronalSpiders;
 (function (NeuronalSpiders) {
     "use strict";
-    var Circle = (function () {
-        function Circle(point, radius, color) {
+    class Circle {
+        constructor(point, radius, color) {
             this.point = point;
             this.radius = radius;
             this.color = color;
         }
-        Circle.prototype.draw = function (canvasContext) {
+
+        draw(canvasContext) {
             if (!this.isActive()) {
                 return;
             }
@@ -15,22 +16,23 @@ var NeuronalSpiders;
             canvasContext.arc(this.point.x, this.point.y, this.radius, 0, 2 * Math.PI, false);
             canvasContext.fillStyle = this.color;
             canvasContext.fill();
-        };
-        Circle.prototype.getOpacity = function () {
+        }
+
+        getOpacity() {
             return this.color.alpha;
-        };
-        Circle.prototype.isActive = function () {
+        }
+
+        isActive() {
             return this.getOpacity() != 0;
-        };
-        return Circle;
-    }());
+        }
+    }
     NeuronalSpiders.Circle = Circle;
 })(NeuronalSpiders || (NeuronalSpiders = {}));
 var NeuronalSpiders;
 (function (NeuronalSpiders) {
     "use strict";
-    var Color = (function () {
-        function Color(red, green, blue, alpha) {
+    class Color {
+        constructor(red, green, blue, alpha) {
             if (red < 0 || red > 255 || green < 0 || green > 255 || blue < 0 || blue > 255 || alpha < 0 || alpha > 1) {
                 throw new RangeError("Out of range numbers");
             }
@@ -39,32 +41,36 @@ var NeuronalSpiders;
             this.blue = blue;
             this.alpha = alpha;
         }
-        Color.FromHex = function (hex) {
+
+        static FromHex(hex) {
             var shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
             hex = hex.replace(shorthandRegex, function (m, r, g, b) {
                 return r + r + g + g + b + b;
             });
             var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
             return result ? new Color(parseInt(result[1], 16), parseInt(result[2], 16), parseInt(result[3], 16), 1) : null;
-        };
-        Color.prototype.toString = function () {
+        }
+
+        toString() {
             if (this.alpha == 1) {
                 return this.toHexString();
             }
             return this.toRGBAString();
-        };
-        Color.prototype.toHexString = function () {
+        }
+
+        toHexString() {
             return "#" + this.componentToHex(this.red) + this.componentToHex(this.green) + this.componentToHex(this.blue);
-        };
-        Color.prototype.toRGBAString = function () {
+        }
+
+        toRGBAString() {
             return "rgba(" + this.red + "," + this.green + "," + this.blue + "," + this.alpha + ")";
-        };
-        Color.prototype.componentToHex = function (component) {
+        }
+
+        componentToHex(component) {
             var hexComponent = component.toString(16);
             return hexComponent.length == 1 ? "0" + hexComponent : hexComponent;
-        };
-        return Color;
-    }());
+        }
+    }
     NeuronalSpiders.Color = Color;
 })(NeuronalSpiders || (NeuronalSpiders = {}));
 var NeuronalSpiders;
@@ -74,21 +80,23 @@ var NeuronalSpiders;
 var NeuronalSpiders;
 (function (NeuronalSpiders) {
     "use strict";
-    var Line = (function () {
-        function Line(point1, point2, color) {
+    class Line {
+        constructor(point1, point2, color) {
             this.point1 = point1;
             this.point2 = point2;
             this.color = color;
         }
-        Line.prototype.draw = function (context) {
+
+        draw(context) {
             context.beginPath();
             context.moveTo(this.point1.x, this.point1.y);
             context.lineTo(this.point2.x, this.point2.y);
             this.color.alpha = this.point1.activeOpacity;
             context.strokeStyle = this.color.toString();
             context.stroke();
-        };
-        Line.drawLines = function (point, color, context) {
+        }
+
+        static drawLines(point, color, context) {
             if (!point.isActive()) {
                 return;
             }
@@ -96,35 +104,37 @@ var NeuronalSpiders;
                 var line = new Line(point, point.closest[i], color);
                 line.draw(context);
             }
-        };
-        return Line;
-    }());
+        }
+    }
     NeuronalSpiders.Line = Line;
 })(NeuronalSpiders || (NeuronalSpiders = {}));
 var NeuronalSpiders;
 (function (NeuronalSpiders) {
     "use strict";
-    var NeuronalSpider = (function () {
-        function NeuronalSpider(configuration) {
+    class NeuronalSpider {
+        constructor(configuration) {
             this.animateHeader = true;
             this.configuration = configuration;
         }
-        NeuronalSpider.prototype.initialize = function () {
+
+        initialize() {
             this.createCanvas();
             this.initializeHeader();
             this.initializePoints();
             this.initAnimation();
             this.addListeners();
-        };
-        NeuronalSpider.prototype.interchangeBackground = function () {
+        }
+
+        interchangeBackground() {
             var style = window.getComputedStyle(this.configuration.targetElement);
             if (style.background != "") {
                 this.canvas.style.background = style.background;
                 this.configuration.targetElement.style.background = "transparent";
             }
             this.canvas.style.zIndex = "-1";
-        };
-        NeuronalSpider.prototype.createCanvas = function () {
+        }
+
+        createCanvas() {
             var clientRect = this.configuration.targetElement.getBoundingClientRect();
             this.canvas = document.createElement("canvas");
             this.configuration.targetElement.parentElement.insertBefore(this.canvas, this.configuration.targetElement);
@@ -136,8 +146,9 @@ var NeuronalSpiders;
             this.canvas.style.width = clientRect.width.toString() + "px";
             this.canvas.style.height = clientRect.height.toString() + "px";
             this.interchangeBackground();
-        };
-        NeuronalSpider.prototype.initializeHeader = function () {
+        }
+
+        initializeHeader() {
             this.points = [];
             this.onResize(null);
             this.targetMouse = {
@@ -145,13 +156,15 @@ var NeuronalSpiders;
                 y: window.innerHeight / 3
             };
             this.context = this.canvas.getContext('2d');
-        };
-        NeuronalSpider.prototype.initializePoints = function () {
+        }
+
+        initializePoints() {
             this.createPoints();
             this.findClosests();
             this.addCircles();
-        };
-        NeuronalSpider.prototype.createPoints = function () {
+        }
+
+        createPoints() {
             var pointsPerDistance = Math.sqrt(this.configuration.numberPoints);
             for (var x = 0; x < this.width; x += this.width / pointsPerDistance) {
                 for (var y = 0; y < this.height; y += this.height / pointsPerDistance) {
@@ -159,45 +172,53 @@ var NeuronalSpiders;
                     this.points.push(point);
                 }
             }
-        };
-        NeuronalSpider.prototype.findClosests = function () {
+        }
+
+        findClosests() {
             this.points = NeuronalSpiders.Point.findClosests(this.points, this.configuration);
-        };
-        NeuronalSpider.prototype.addCircles = function () {
+        }
+
+        addCircles() {
             for (var i in this.points) {
                 this.points[i].addCircle(this.configuration);
             }
-        };
-        NeuronalSpider.prototype.addListeners = function () {
+        }
+
+        addListeners() {
             if (!('ontouchstart' in window)) {
                 this.configuration.targetElement.onmousemove = this.onMouseMove.bind(this);
             }
             window.onresize = this.onResize.bind(this);
             window.onscroll = this.onScrollCheck.bind(this);
-        };
-        NeuronalSpider.prototype.onMouseMove = function (event) {
+        }
+
+        onMouseMove(event) {
             this.targetMouse.x = event.offsetX;
             this.targetMouse.y = event.offsetY;
-        };
-        NeuronalSpider.prototype.onScrollCheck = function (event) {
+        }
+
+        onScrollCheck(event) {
             if (document.body.scrollTop > this.height) {
                 this.animateHeader = false;
             }
             else {
                 this.animateHeader = true;
             }
-        };
-        NeuronalSpider.prototype.onResize = function (event) {
+        }
+
+        onResize(event) {
             this.width = this.canvas.width = this.configuration.targetElement.clientWidth;
             this.height = this.canvas.height = this.configuration.targetElement.clientHeight;
-        };
-        NeuronalSpider.prototype.initAnimation = function () {
+        }
+
+        initAnimation() {
             this.animate();
             for (var i in this.points) {
                 this.shiftPoint(this.points[i]);
             }
-        };
-        NeuronalSpider.prototype.animate = function () {
+        }
+
+        animate() {
             if (this.animateHeader) {
                 this.context.clearRect(0, 0, this.width, this.height);
                 for (var i in this.points) {
@@ -244,23 +265,23 @@ var NeuronalSpiders;
                 }
             }
             requestAnimationFrame(this.animate.bind(this));
-        };
-        NeuronalSpider.prototype.shiftPoint = function (target) {
+        }
+
+        shiftPoint(target) {
             TweenLite.to(target, 1 + 1 * Math.random(), {
                 x: target.originX - 50 + Math.random() * 100,
                 y: target.originY - 50 + Math.random() * 100,
                 onComplete: this.shiftPoint.bind(this, target),
             });
-        };
-        return NeuronalSpider;
-    }());
+        }
+    }
     NeuronalSpiders.NeuronalSpider = NeuronalSpider;
 })(NeuronalSpiders || (NeuronalSpiders = {}));
 var NeuronalSpiders;
 (function (NeuronalSpiders) {
     "use strict";
-    var NeuronalSpiderConfiguration = (function () {
-        function NeuronalSpiderConfiguration(htmlElement, enabled) {
+    class NeuronalSpiderConfiguration {
+        constructor(htmlElement, enabled) {
             this.enabled = true;
             this.numberPoints = 400;
             this.numberLines = 5;
@@ -272,7 +293,8 @@ var NeuronalSpiders;
             this.targetElement = htmlElement;
             this.enabled = enabled;
         }
-        NeuronalSpiderConfiguration.readConfiguration = function (htmlElement) {
+
+        static readConfiguration(htmlElement) {
             if (htmlElement.dataset['neuronal'] == "true") {
                 var result = new NeuronalSpiderConfiguration(htmlElement, true);
                 var numberPoints = htmlElement.dataset['numberPoints'];
@@ -312,8 +334,9 @@ var NeuronalSpiders;
                 return result;
             }
             return new NeuronalSpiderConfiguration(htmlElement, false);
-        };
-        NeuronalSpiderConfiguration.searchNeuronalSpiderElements = function () {
+        }
+
+        static searchNeuronalSpiderElements() {
             try {
                 var nodeList = document.querySelectorAll('[data-neuronal]');
                 return Array.prototype.slice.call(nodeList);
@@ -321,32 +344,36 @@ var NeuronalSpiders;
             catch (exception) {
                 return null;
             }
-        };
-        return NeuronalSpiderConfiguration;
-    }());
+        }
+    }
     NeuronalSpiders.NeuronalSpiderConfiguration = NeuronalSpiderConfiguration;
 })(NeuronalSpiders || (NeuronalSpiders = {}));
 var NeuronalSpiders;
 (function (NeuronalSpiders) {
     "use strict";
-    var Point = (function () {
-        function Point(x, y) {
+    class Point {
+        constructor(x, y) {
             this.x = this.originX = x;
             this.y = this.originY = y;
         }
-        Point.prototype.isActive = function () {
+
+        isActive() {
             return this.activeOpacity != 0;
-        };
-        Point.prototype.addCircle = function (configuration) {
+        }
+
+        addCircle(configuration) {
             this.circle = new NeuronalSpiders.Circle(this, configuration.circleRadius + Math.random() * 2, new NeuronalSpiders.Color(configuration.circleColor.red, configuration.circleColor.green, configuration.circleColor.blue, 1));
-        };
-        Point.getAbsolutDistance = function (point1, point2) {
+        }
+
+        static getAbsolutDistance(point1, point2) {
             return Math.abs(Point.getDistance(point1, point2));
-        };
-        Point.getDistance = function (point1, point2) {
+        }
+
+        static getDistance(point1, point2) {
             return Math.pow(point1.x - point2.x, 2) + Math.pow(point1.y - point2.y, 2);
-        };
-        Point.findClosests = function (points, configuration) {
+        }
+
+        static findClosests(points, configuration) {
             for (var i in points) {
                 var closest = new Array(configuration.numberLines);
                 var point = points[i];
@@ -375,9 +402,8 @@ var NeuronalSpiders;
                 point.closest = closest;
             }
             return points;
-        };
-        return Point;
-    }());
+        }
+    }
     NeuronalSpiders.Point = Point;
 })(NeuronalSpiders || (NeuronalSpiders = {}));
 var NeuronalSpiders;
