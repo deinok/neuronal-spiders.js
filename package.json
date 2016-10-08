@@ -1,35 +1,35 @@
 {
-  "name": "neuronal-spiders.js",
-  "description": "Displays a connections beetween multiple points, very cute visual effect",
-  "version": "0.5.0",
-  "private": true,
-  "license": "MIT",
-  "keywords": [
-    "neuronal",
-    "spider",
-    "javascript",
-    "typescript",
-    "canvas"
-  ],
-  "homepage": "https://github.com/deinok/neuronal-spiders.js",
-  "author":"raul.hidalgo.sopa@gmail.com",
-  "repository": {
-    "url": "https://github.com/deinok/neuronal-spiders.js",
-    "type": "git"
-  },
-  "scripts": {
-	  "postinstall": "npm run bower && npm run typings && npm run build",
-	  "build": "npm run tslint && npm run tsc",
-    "start": "http-server -a localhost -p 8000 -c-1 ./app",
-    "bower": "node_modules/.bin/bower install",
-    "typings": "node_modules/.bin/typings install",
-	  "tsc": "node_modules/.bin/tsc",
-	  "tslint": "node_modules/.bin/tslint src/*.ts"
-  },
-  "devDependencies": {
-    "typescript": "^2.0.3",
-    "typings":"^1.3.1",
-    "tslint": "^3.12.1",
-    "bower": "^1.7.9"
-  }
+	"name": "neuronal-spiders.js",
+	"description": "Displays a connections beetween multiple points, very cute visual effect",
+	"version": "0.5.0",
+	"private": true,
+	"license": "MIT",
+	"keywords": [
+		"neuronal",
+		"spider",
+		"javascript",
+		"typescript",
+		"canvas"
+	],
+	"homepage": "https://github.com/deinok/neuronal-spiders.js",
+	"author": "raul.hidalgo.sopa@gmail.com",
+	"repository": {
+		"url": "https://github.com/deinok/neuronal-spiders.js",
+		"type": "git"
+	},
+	"scripts": {
+		"postinstall": "npm run bower && npm run typings && npm run build",
+		"build": "npm run tslint && npm run tsc",
+		"start": "http-server -a localhost -p 8000 -c-1 ./app",
+		"bower": "node_modules/.bin/bower install",
+		"typings": "node_modules/.bin/typings install",
+		"tsc": "node_modules/.bin/tsc",
+		"tslint": "node_modules/.bin/tslint src/*.ts"
+	},
+	"devDependencies": {
+		"typescript": "^2.0.3",
+		"typings": "^1.3.1",
+		"tslint": "^3.12.1",
+		"bower": "^1.7.9"
+	}
 }
