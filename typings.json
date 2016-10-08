@@ -1,6 +1,7 @@
 {
 	"globalDependencies": {
-		"core-js": "registry:dt/core-js#0.0.0+20160602141332",
-		"greensock": "registry:dt/greensock#1.15.1+20160316155526"
+		"gsapCore": "github:DefinitelyTyped/DefinitelyTyped/gsap/Core.d.ts",
+		"gsapEase": "github:DefinitelyTyped/DefinitelyTyped/gsap/Ease.d.ts",
+		"gsapTweenLite": "github:DefinitelyTyped/DefinitelyTyped/gsap/TweenLite.d.ts"
 	}
 }

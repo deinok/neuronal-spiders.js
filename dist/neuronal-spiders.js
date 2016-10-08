@@ -26,7 +26,6 @@ var NeuronalSpiders;
     }());
     NeuronalSpiders.Circle = Circle;
 })(NeuronalSpiders || (NeuronalSpiders = {}));
-
 var NeuronalSpiders;
 (function (NeuronalSpiders) {
     "use strict";
@@ -68,12 +67,10 @@ var NeuronalSpiders;
     }());
     NeuronalSpiders.Color = Color;
 })(NeuronalSpiders || (NeuronalSpiders = {}));
-
 var NeuronalSpiders;
 (function (NeuronalSpiders) {
     "use strict";
 })(NeuronalSpiders || (NeuronalSpiders = {}));
-
 var NeuronalSpiders;
 (function (NeuronalSpiders) {
     "use strict";
@@ -104,7 +101,6 @@ var NeuronalSpiders;
     }());
     NeuronalSpiders.Line = Line;
 })(NeuronalSpiders || (NeuronalSpiders = {}));
-
 var NeuronalSpiders;
 (function (NeuronalSpiders) {
     "use strict";
@@ -260,7 +256,6 @@ var NeuronalSpiders;
     }());
     NeuronalSpiders.NeuronalSpider = NeuronalSpider;
 })(NeuronalSpiders || (NeuronalSpiders = {}));
-
 var NeuronalSpiders;
 (function (NeuronalSpiders) {
     "use strict";
@@ -331,7 +326,6 @@ var NeuronalSpiders;
     }());
     NeuronalSpiders.NeuronalSpiderConfiguration = NeuronalSpiderConfiguration;
 })(NeuronalSpiders || (NeuronalSpiders = {}));
-
 var NeuronalSpiders;
 (function (NeuronalSpiders) {
     "use strict";
@@ -386,7 +380,6 @@ var NeuronalSpiders;
     }());
     NeuronalSpiders.Point = Point;
 })(NeuronalSpiders || (NeuronalSpiders = {}));
-
 var NeuronalSpiders;
 (function (NeuronalSpiders) {
     "use strict";
@@ -398,12 +391,9 @@ var NeuronalSpiders;
         var neuronalSpiders = new Array(neuronalElements.length);
         for (var i in neuronalElements) {
             var configuration = NeuronalSpiders.NeuronalSpiderConfiguration.readConfiguration(neuronalElements[i]);
-            var spider = new NeuronalSpiders.NeuronalSpider(configuration);
-            neuronalSpiders[i] = spider;
+            neuronalSpiders[i] = new NeuronalSpiders.NeuronalSpider(configuration);
             neuronalSpiders[i].initialize();
         }
     }
-
-    NeuronalSpiders.execute = execute;
 })(NeuronalSpiders || (NeuronalSpiders = {}));
 //# sourceMappingURL=neuronal-spiders.js.map
