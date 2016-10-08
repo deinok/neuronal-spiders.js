@@ -1,9 +1,12 @@
-﻿"use strict";
+﻿namespace NeuronalSpiders {
 
-/**
- * Represents a Geometric Point
- */
-interface GeometricPoint {
-	x:number;
-	y:number;
+	"use strict";
+
+	/**
+	 * Represents a Geometric Point
+	 */
+	export interface IGeometricPoint {
+		x:number;
+		y:number;
+	}
 }

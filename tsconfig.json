@@ -1,12 +1,14 @@
 {
 	"compilerOptions": {
-		"module": "commonjs",
-		"target": "es5",
-		"outDir": "/dist",
+		"charset": "utf-8",
+		"experimentalDecorators": true,
+		"module": "system",
+		"moduleResolution": "node",
 		"noImplicitAny": true,
+		"outFile": "dist/neuronal-spiders.js",
 		"removeComments": true,
 		"sourceMap": true,
-		"pretty": false
+		"target": "es5"
 	},
 	"exclude": [
 		"node_modules",
