@@ -1,4 +1,2 @@
-.vs/
-bin/
-obj/
-*.csproj.user
+# Node.js
+node_modules/
