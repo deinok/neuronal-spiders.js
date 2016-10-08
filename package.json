@@ -18,7 +18,7 @@
     "type": "git"
   },
   "scripts": {
-    "postinstall": "npm run bower && npm run typings",
+	  "postinstall": "npm run bower && npm run typings && npm run build",
 	  "build": "npm run tslint && npm run tsc",
     "start": "http-server -a localhost -p 8000 -c-1 ./app",
     "bower": "node_modules/.bin/bower install",
