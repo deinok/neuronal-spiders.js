@@ -1,23 +1,41 @@
 {
   "rules": {
-    "align": [
+	  "align": true,
+	  "eofline": true,
+	  "curly": true,
+	  "class-name": true,
+	  "interface-name": true,
+	  "member-access": true,
+	  "new-parens": true,
+	  "no-duplicate-key": true,
+	  "no-empty": true,
+	  "no-eval": true,
+	  "no-internal-module": true,
+	  "no-reference": true,
+	  "no-require-imports": true,
+	  "one-line": [
       true,
-      "arguments",
-      "parameters",
-      "statements"
+		  "check-catch",
+		  "check-else",
+		  "check-whitespace"
     ],
-    "class-name": true,
-    "eofline": true,
-    "indent": [
+	  "one-variable-per-declaration": [
       true,
-      "tabs"
+		  "ignore-for-loop"
     ],
     "quotemark": [
-      true,
-      "double"
+	    "double",
+	    true
     ],
-    "no-any": true,
-    "no-eval": true,
-    "semicolon": true
+	  "semicolon": true,
+	  "use-strict": [
+      true,
+		  "check-module"
+    ],
+	  "variable-name": [
+		  true,
+		  "ban-keywords",
+		  "check-format"
+	  ]
   }
 }
