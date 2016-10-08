@@ -25,7 +25,7 @@ class Line {
      * Draw a Line
      * @param context The Canvas Context
      */
-    public draw(context:CanvasRenderingContext2D):void{
+    public draw(context:CanvasRenderingContext2D):void {
         context.beginPath();
         context.moveTo(this.point1.x, this.point1.y);
         context.lineTo(this.point2.x, this.point2.y);

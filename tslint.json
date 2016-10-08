@@ -1,41 +1,41 @@
 {
-  "rules": {
-	  "align": true,
-	  "eofline": true,
-	  "curly": true,
-	  "class-name": true,
-	  "interface-name": true,
-	  "member-access": true,
-	  "new-parens": true,
-	  "no-duplicate-key": true,
-	  "no-empty": true,
-	  "no-eval": true,
-	  "no-internal-module": true,
-	  "no-reference": true,
-	  "no-require-imports": true,
-	  "one-line": [
-      true,
-		  "check-catch",
-		  "check-else",
-		  "check-whitespace"
-    ],
-	  "one-variable-per-declaration": [
-      true,
-		  "ignore-for-loop"
-    ],
-    "quotemark": [
-	    "double",
-	    true
-    ],
-	  "semicolon": true,
-	  "use-strict": [
-      true,
-		  "check-module"
-    ],
-	  "variable-name": [
-		  true,
-		  "ban-keywords",
-		  "check-format"
-	  ]
-  }
+	"rules": {
+		"align": true,
+		"eofline": true,
+		"curly": true,
+		"class-name": true,
+		"interface-name": true,
+		"member-access": true,
+		"new-parens": true,
+		"no-duplicate-key": true,
+		"no-empty": true,
+		"no-eval": true,
+		"no-internal-module": true,
+		"no-reference": true,
+		"no-require-imports": true,
+		"one-line": [
+			true,
+			"check-catch",
+			"check-else",
+			"check-whitespace"
+		],
+		"one-variable-per-declaration": [
+			true,
+			"ignore-for-loop"
+		],
+		"quotemark": [
+			"double",
+			true
+		],
+		"semicolon": true,
+		"use-strict": [
+			true,
+			"check-module"
+		],
+		"variable-name": [
+			true,
+			"ban-keywords",
+			"check-format"
+		]
+	}
 }

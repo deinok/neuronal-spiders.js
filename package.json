@@ -19,11 +19,12 @@
   },
   "scripts": {
     "postinstall": "npm run bower && npm run typings",
-    "build": "npm run tsc",
+	  "build": "npm run tslint && npm run tsc",
     "start": "http-server -a localhost -p 8000 -c-1 ./app",
     "bower": "node_modules/.bin/bower install",
     "typings": "node_modules/.bin/typings install",
-    "tsc": "node_modules/.bin/tsc"
+	  "tsc": "node_modules/.bin/tsc",
+	  "tslint": "node_modules/.bin/tslint src/*.ts"
   },
   "devDependencies": {
     "typescript": "^2.0.3",

@@ -19,7 +19,7 @@ class Color {
      */
     public constructor(red: number, green: number, blue: number, alpha: number) {
         if (red < 0 || red > 255 || green < 0 || green > 255 || blue < 0 || blue > 255 || alpha < 0 || alpha > 1) {
-            throw new RangeError("Out of range numbers")
+            throw new RangeError("Out of range numbers");
         }
         this.red = red;
         this.green = green;

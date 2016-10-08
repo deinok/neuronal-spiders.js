@@ -15,5 +15,3 @@ function execute():void {
         neuronalSpiders[i].initialize();
     }
 }
-
-
