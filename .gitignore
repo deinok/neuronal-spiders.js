@@ -7,3 +7,5 @@ npm-debug.log
 typings/
 
 # JetBrains
+.idea/workspace.xml
+.idea/tasks.xml
