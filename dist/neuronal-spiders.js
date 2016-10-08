@@ -7,7 +7,6 @@ var NeuronalSpiders;
             this.radius = radius;
             this.color = color;
         }
-
         Circle.prototype.draw = function (canvasContext) {
             if (!this.isActive()) {
                 return;
@@ -27,6 +26,7 @@ var NeuronalSpiders;
     }());
     NeuronalSpiders.Circle = Circle;
 })(NeuronalSpiders || (NeuronalSpiders = {}));
+
 var NeuronalSpiders;
 (function (NeuronalSpiders) {
     "use strict";
@@ -40,7 +40,6 @@ var NeuronalSpiders;
             this.blue = blue;
             this.alpha = alpha;
         }
-
         Color.FromHex = function (hex) {
             var shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
             hex = hex.replace(shorthandRegex, function (m, r, g, b) {
@@ -69,10 +68,12 @@ var NeuronalSpiders;
     }());
     NeuronalSpiders.Color = Color;
 })(NeuronalSpiders || (NeuronalSpiders = {}));
+
 var NeuronalSpiders;
 (function (NeuronalSpiders) {
     "use strict";
 })(NeuronalSpiders || (NeuronalSpiders = {}));
+
 var NeuronalSpiders;
 (function (NeuronalSpiders) {
     "use strict";
@@ -82,7 +83,6 @@ var NeuronalSpiders;
             this.point2 = point2;
             this.color = color;
         }
-
         Line.prototype.draw = function (context) {
             context.beginPath();
             context.moveTo(this.point1.x, this.point1.y);
@@ -104,25 +104,7 @@ var NeuronalSpiders;
     }());
     NeuronalSpiders.Line = Line;
 })(NeuronalSpiders || (NeuronalSpiders = {}));
-var NeuronalSpiders;
-(function (NeuronalSpiders) {
-    "use strict";
-    window.onload = function () {
-        execute();
-    };
-    function execute() {
-        var neuronalElements = NeuronalSpiders.NeuronalSpiderConfiguration.searchNeuronalSpiderElements();
-        var neuronalSpiders = new Array(neuronalElements.length);
-        for (var i in neuronalElements) {
-            var configuration = NeuronalSpiders.NeuronalSpiderConfiguration.readConfiguration(neuronalElements[i]);
-            var spider = new NeuronalSpiders.NeuronalSpider(configuration);
-            neuronalSpiders[i] = spider;
-            neuronalSpiders[i].initialize();
-        }
-    }
 
-    NeuronalSpiders.execute = execute;
-})(NeuronalSpiders || (NeuronalSpiders = {}));
 var NeuronalSpiders;
 (function (NeuronalSpiders) {
     "use strict";
@@ -131,7 +113,6 @@ var NeuronalSpiders;
             this.animateHeader = true;
             this.configuration = configuration;
         }
-
         NeuronalSpider.prototype.initialize = function () {
             this.createCanvas();
             this.initializeHeader();
@@ -279,6 +260,7 @@ var NeuronalSpiders;
     }());
     NeuronalSpiders.NeuronalSpider = NeuronalSpider;
 })(NeuronalSpiders || (NeuronalSpiders = {}));
+
 var NeuronalSpiders;
 (function (NeuronalSpiders) {
     "use strict";
@@ -295,7 +277,6 @@ var NeuronalSpiders;
             this.targetElement = htmlElement;
             this.enabled = enabled;
         }
-
         NeuronalSpiderConfiguration.readConfiguration = function (htmlElement) {
             if (htmlElement.dataset['neuronal'] == "true") {
                 var result = new NeuronalSpiderConfiguration(htmlElement, true);
@@ -350,6 +331,7 @@ var NeuronalSpiders;
     }());
     NeuronalSpiders.NeuronalSpiderConfiguration = NeuronalSpiderConfiguration;
 })(NeuronalSpiders || (NeuronalSpiders = {}));
+
 var NeuronalSpiders;
 (function (NeuronalSpiders) {
     "use strict";
@@ -358,7 +340,6 @@ var NeuronalSpiders;
             this.x = this.originX = x;
             this.y = this.originY = y;
         }
-
         Point.prototype.isActive = function () {
             return this.activeOpacity != 0;
         };
@@ -404,5 +385,25 @@ var NeuronalSpiders;
         return Point;
     }());
     NeuronalSpiders.Point = Point;
+})(NeuronalSpiders || (NeuronalSpiders = {}));
+
+var NeuronalSpiders;
+(function (NeuronalSpiders) {
+    "use strict";
+    window.onload = function () {
+        execute();
+    };
+    function execute() {
+        var neuronalElements = NeuronalSpiders.NeuronalSpiderConfiguration.searchNeuronalSpiderElements();
+        var neuronalSpiders = new Array(neuronalElements.length);
+        for (var i in neuronalElements) {
+            var configuration = NeuronalSpiders.NeuronalSpiderConfiguration.readConfiguration(neuronalElements[i]);
+            var spider = new NeuronalSpiders.NeuronalSpider(configuration);
+            neuronalSpiders[i] = spider;
+            neuronalSpiders[i].initialize();
+        }
+    }
+
+    NeuronalSpiders.execute = execute;
 })(NeuronalSpiders || (NeuronalSpiders = {}));
 //# sourceMappingURL=neuronal-spiders.js.map
