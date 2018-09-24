@@ -29,11 +29,12 @@
 		"url": "https://github.com/deinok/neuronal-spiders.js"
 	},
 	"scripts": {
-		"build": "npm run tsc && npm run webpack",
+		"build": "npm run tsc && npm run webpack:dev",
 		"start": "http-server -a localhost -p 8000 -c-1 .",
 		"tsc": "node_modules/.bin/tsc",
 		"tslint": "tslint --fix --project ./tsconfig.json",
-		"webpack": "webpack"
+		"webpack:dev": "webpack --mode development",
+		"webpack:prod": "webpack --mode production"
 	},
 	"version": "0.5.0"
 }
