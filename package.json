@@ -1,22 +1,32 @@
 {
 	"$schema": "http://json.schemastore.org/package",
-	"name": "neuronal-spiders.js",
+	"author": "raul.hidalgo.sopa@gmail.com",
+	"browser": "./dist/neuronal-spiders.js",
 	"description": "Displays a connections beetween multiple points, very cute visual effect",
-	"version": "0.5.0",
-	"private": true,
-	"license": "MIT",
+	"devDependencies": {
+		"@types/gsap": "^1.19.2",
+		"gsap": "^1.19.1",
+		"http-server": "^0.11.1",
+		"tslint": "^5.11.0",
+		"typescript": "^3.0.3",
+		"webpack": "^4.19.1",
+		"webpack-cli": "^3.1.1"
+	},
+	"homepage": "https://github.com/deinok/neuronal-spiders.js",
 	"keywords": [
+		"canvas",
+		"javascript",
 		"neuronal",
 		"spider",
-		"javascript",
-		"typescript",
-		"canvas"
+		"typescript"
 	],
-	"homepage": "https://github.com/deinok/neuronal-spiders.js",
-	"author": "raul.hidalgo.sopa@gmail.com",
+	"license": "MIT",
+	"module": "./src/index.js",
+	"name": "neuronal-spiders.js",
+	"private": true,
 	"repository": {
-		"url": "https://github.com/deinok/neuronal-spiders.js",
-		"type": "git"
+		"type": "git",
+		"url": "https://github.com/deinok/neuronal-spiders.js"
 	},
 	"scripts": {
 		"build": "npm run tsc && npm run webpack",
@@ -25,13 +35,5 @@
 		"tslint": "tslint --fix --project ./tsconfig.json",
 		"webpack": "webpack"
 	},
-	"devDependencies": {
-		"@types/gsap": "^1.19.2",
-		"gsap": "^1.19.1",
-		"http-server": "^0.11.1",
-		"typescript": "^3.0.3",
-		"tslint": "^5.11.0",
-		"webpack": "^4.19.1",
-		"webpack-cli": "^3.1.1"
-	}
+	"version": "0.5.0"
 }
