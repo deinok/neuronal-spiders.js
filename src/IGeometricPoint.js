@@ -1,0 +1,1 @@
+//# sourceMappingURL=IGeometricPoint.js.map

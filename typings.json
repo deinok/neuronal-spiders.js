@@ -1,7 +1,0 @@
-{
-	"globalDependencies": {
-		"gsapCore": "github:DefinitelyTyped/DefinitelyTyped/gsap/Core.d.ts",
-		"gsapEase": "github:DefinitelyTyped/DefinitelyTyped/gsap/Ease.d.ts",
-		"gsapTweenLite": "github:DefinitelyTyped/DefinitelyTyped/gsap/TweenLite.d.ts"
-	}
-}
