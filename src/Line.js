@@ -1,4 +1,13 @@
+/**
+ * Represents a Line in Canvas
+ */
 export class Line {
+    /**
+     * Draws all Lines of a Point
+     * @param point The Point
+     * @param color The Color
+     * @param context The Canvas Context
+     */
     static drawLines(point, color, context) {
         if (!point.isActive()) {
             return;
@@ -8,11 +17,21 @@ export class Line {
             line.draw(context);
         }
     }
+    /**
+     * Creates a Line beetween two points
+     * @param point1 The first Point
+     * @param point2 The second Point
+     * @param color The Color
+     */
     constructor(point1, point2, color) {
         this.point1 = point1;
         this.point2 = point2;
         this.color = color;
     }
+    /**
+     * Draw a Line
+     * @param context The Canvas Context
+     */
     draw(context) {
         context.beginPath();
         context.moveTo(this.point1.x, this.point1.y);

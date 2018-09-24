@@ -1,11 +1,4 @@
-# Node.js
+.idea/
 node_modules/
-bower_components/
-npm-debug.log
-
-# TypeScript
-typings/
-
-# JetBrains
-.idea/workspace.xml
-.idea/tasks.xml
+src/**/*.js
+src/**/*.js.map

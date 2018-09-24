@@ -1,4 +1,7 @@
 import { Color } from "./Color";
+/**
+ * Represents the Configuration of a Neuronal Spider
+ */
 export class NeuronalSpiderConfiguration {
     constructor(htmlElement, enabled) {
         this.enabled = true;
@@ -12,6 +15,10 @@ export class NeuronalSpiderConfiguration {
         this.targetElement = htmlElement;
         this.enabled = enabled;
     }
+    /**
+     * Return a NeuronaSpiderConfiguration of the given NeuronalSpiderConfiguration
+     * @param htmlElement
+     */
     static readConfiguration(htmlElement) {
         if (htmlElement.dataset.neuronal == "true") {
             let result = new NeuronalSpiderConfiguration(htmlElement, true);
@@ -53,6 +60,9 @@ export class NeuronalSpiderConfiguration {
         }
         return new NeuronalSpiderConfiguration(htmlElement, false);
     }
+    /**
+     * Search all data-neuronal=enabled and return its HTMLElement
+     */
     static searchNeuronalSpiderElements() {
         try {
             let nodeList = document.querySelectorAll("[data-neuronal]");

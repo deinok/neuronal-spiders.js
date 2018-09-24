@@ -1,9 +1,22 @@
+/**
+ * Represents a Circle
+ */
 export class Circle {
+    /**
+     * Creates a Circle
+     * @param point the IGeometricPoint
+     * @param radius the radius of the Circle
+     * @param color the Color of the Circle
+     */
     constructor(point, radius, color) {
         this.point = point;
         this.radius = radius;
         this.color = color;
     }
+    /**
+     * Draw a Circle in the canvas
+     * @param canvasContext The Canvas Context
+     */
     draw(canvasContext) {
         if (!this.isActive()) {
             return;
@@ -13,9 +26,15 @@ export class Circle {
         canvasContext.fillStyle = this.color;
         canvasContext.fill();
     }
+    /**
+     * Gets the Opacity of its Colors
+     */
     getOpacity() {
         return this.color.alpha;
     }
+    /**
+     * Checks if its opacity is not 0
+     */
     isActive() {
         return this.getOpacity() !== 0;
     }

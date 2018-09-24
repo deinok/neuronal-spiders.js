@@ -49,6 +49,9 @@ export class NeuronalSpider {
         this.findClosests();
         this.addCircles();
     }
+    /**
+     * Adds Listeners
+     */
     addListeners() {
         if (!("ontouchstart" in window)) {
             this.configuration.targetElement.onmousemove = this.onMouseMove.bind(this);
@@ -62,6 +65,9 @@ export class NeuronalSpider {
             this.shiftPoint(this.points[i]);
         }
     }
+    /**
+     * Creates the Points
+     */
     createPoints() {
         let pointsPerDistance = Math.sqrt(this.configuration.numberPoints);
         for (let x = 0; x < this.width; x += this.width / pointsPerDistance) {
@@ -71,9 +77,15 @@ export class NeuronalSpider {
             }
         }
     }
+    /**
+     * Find the closestPoints
+     */
     findClosests() {
         this.points = Point.findClosests(this.points, this.configuration);
     }
+    /**
+     * Add Circles to every Point
+     */
     addCircles() {
         for (let i in this.points) {
             this.points[i].addCircle(this.configuration);

@@ -1,5 +1,8 @@
 import { Circle } from "./Circle";
 import { Color } from "./Color";
+/**
+ * Represents a Point in Canvas
+ */
 export class Point {
     static getAbsolutDistance(point1, point2) {
         return Math.abs(Point.getDistance(point1, point2));
